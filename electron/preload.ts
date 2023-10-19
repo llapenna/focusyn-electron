@@ -1,7 +1,5 @@
-import { IpcRendererEvent, contextBridge, ipcRenderer } from 'electron';
-
-type SubscribeFunction = (event: IpcRendererEvent, ...args: any[]) => void;
-
+import { contextBridge, ipcRenderer } from 'electron';
+import type { SubscribeFunction } from '@/shared/types';
 /**
  * Expose protected methods that allow the renderer process to use node modules and methods
  */
