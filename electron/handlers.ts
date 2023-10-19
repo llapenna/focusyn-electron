@@ -30,6 +30,5 @@ export const addWindowHandlers = (window: BrowserWindow | null) => {
  * between the main process and the renderer process.
  */
 export const addIPCHandlers = () => {
-  ipcMain.handle('GET_CURRENT_WINDOW', () => activeWindow.getCurrent());
-  ipcMain.handle('GET_ALL_WINDOWS', () => activeWindow.getAll());
+  ipcMain.handle('ACTIVE_WINDOW_CURRENT', () => activeWindow.getCurrent());
 };

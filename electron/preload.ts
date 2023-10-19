@@ -1,4 +1,6 @@
-import { contextBridge, ipcRenderer } from 'electron';
+import { IpcRendererEvent, contextBridge, ipcRenderer } from 'electron';
+
+type SubscribeFunction = (event: IpcRendererEvent, ...args: any[]) => void;
 
 /**
  * Expose protected methods that allow the renderer process to use node modules and methods
@@ -13,6 +15,7 @@ contextBridge.exposeInMainWorld('versions', {
  * Expose active window related methods
  */
 contextBridge.exposeInMainWorld('activeWindow', {
-  current: () => ipcRenderer.invoke('GET_CURRENT_WINDOW'),
-  all: () => ipcRenderer.invoke('GET_ALL_WINDOWS'),
+  current: () => ipcRenderer.invoke('ACTIVE_WINDOW_CURRENT'),
+  subscribe: (callback: SubscribeFunction) =>
+    ipcRenderer.on('ACTIVE_WINDOW_SUBSCRIBE', callback),
 });
