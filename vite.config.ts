@@ -36,6 +36,9 @@ export default defineConfig(({ command }) => {
           },
           vite: {
             build: {
+              rollupOptions: {
+                external: ['active-win'],
+              },
               sourcemap: isServing,
               minify: isBuilding,
             },
