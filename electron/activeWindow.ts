@@ -5,7 +5,7 @@ import activeWin from 'active-win';
  * @returns Array of all open windows
  */
 export const getAll = () => {
-  return activeWin.getOpenWindowsSync();
+  return activeWin.getOpenWindows();
 };
 
 /**

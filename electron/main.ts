@@ -2,7 +2,7 @@ import { join } from 'path';
 import { app, BrowserWindow } from 'electron';
 
 import { PUBLIC, DIST_ELECTRON, URL, DIST } from './config';
-import addHandlers from './handler';
+import { addWindowHandlers, addIPCHandlers } from './handlers';
 
 let window: BrowserWindow | null;
 
@@ -22,7 +22,10 @@ function createWindow() {
   if (URL) window.loadURL(URL);
   else window.loadFile(indexHTML);
 
-  addHandlers(window);
+  addWindowHandlers(window);
+  addIPCHandlers();
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+});
