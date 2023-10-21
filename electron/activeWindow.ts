@@ -1,10 +1,11 @@
 import activeWin from 'active-win';
+import { window } from './main';
 
 /**
  * Gets a list of all open windows
  * @returns Array of all open windows
  */
-export const getAll = () => {
+const getAll = () => {
   return activeWin.getOpenWindows();
 };
 
@@ -12,12 +13,23 @@ export const getAll = () => {
  * Gets the current active window
  * @returns Active window
  */
-const getCurrent = async () => {
+const getCurrent = () => {
   return activeWin.sync();
+};
+
+/**
+ * Sends the current active window to the renderer (React) process
+ */
+const send = (): void => {
+  if (window) {
+    const result = getCurrent();
+    window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', { window: result });
+  }
 };
 
 const activeWindow = {
   getCurrent,
   getAll,
+  send,
 };
 export default activeWindow;
