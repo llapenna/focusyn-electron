@@ -1,6 +1,6 @@
 import { IpcRendererEvent } from 'electron';
 
-export type SubscribeFunction = (
+export type SubscribeCallback<T extends object = object> = (
   event: IpcRendererEvent,
-  ...args: any[]
+  args: T
 ) => void;
