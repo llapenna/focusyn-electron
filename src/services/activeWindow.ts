@@ -1,5 +1,5 @@
-import type { ActiveWindow } from '@/shared/activeWindow';
-import checkPreload from '@/utils/checkPreload';
+import type { ActiveWindow } from '@/shared/types/activeWindow';
+import checkPreload from '@/reactapp/utils/checkPreload';
 
 /**
  * Listen for active-window messages from the main process
