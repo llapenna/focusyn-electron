@@ -17,8 +17,3 @@ export const URL = process.env['VITE_DEV_SERVER_URL'];
  * Is the current environment development?
  */
 export const IS_DEV = isdev;
-
-/**
- * How often should the active window be checked?
- */
-export const INTERVAL_TIME = 1000;

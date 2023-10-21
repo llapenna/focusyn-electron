@@ -23,12 +23,12 @@
     /* Project folders */
     "baseUrl": "./",
     "paths": {
-      "@/components/*": ["src/components/*"],
-      "@/utils/*": ["src/utils/*"],
-      "@/services/*": ["src/services/*"],
+      "@/reactapp/components/*": ["src/components/*"],
+      "@/reactapp/utils/*": ["src/utils/*"],
+      "@/reactapp/services/*": ["src/services/*"],
       "@/shared/*": ["shared/*"]
     }
   },
-  "include": ["src", "electron"],
+  "include": ["src", "electron", "shared"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

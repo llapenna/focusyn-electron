@@ -22,9 +22,10 @@ export default defineConfig(({ command }) => {
 
   return {
     resolve: {
-      alias: {
-        '@': join(__dirname, 'src'),
-      },
+      alias: [
+        { find: '@/shared', replacement: join(__dirname, 'shared') },
+        { find: '@/reactapp', replacement: join(__dirname, 'src') },
+      ],
     },
     plugins: [
       react(),
@@ -35,6 +36,11 @@ export default defineConfig(({ command }) => {
             options.startup();
           },
           vite: {
+            resolve: {
+              alias: [
+                { find: '@/shared', replacement: join(__dirname, 'shared') },
+              ],
+            },
             build: {
               rollupOptions: {
                 external: ['active-win'],
