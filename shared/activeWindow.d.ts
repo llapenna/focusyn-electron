@@ -2,7 +2,9 @@ import activeWindow from 'active-win';
 import type { SubscribeCallback } from './types';
 
 export namespace ActiveWindow {
-  export type Result = activeWindow.Result | undefined;
-  export type Callback = SubscribeCallback<Result>;
+  export interface Result extends activeWindow.Result {
+    timestamp: number;
+  }
+  export type Callback = SubscribeCallback<Result | undefined>;
   export type Subscribe = (callback: Callback) => void;
 }
