@@ -23,7 +23,7 @@ const getCurrent = () => {
 const send = (): void => {
   if (window) {
     const result = getCurrent();
-    window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', { window: result });
+    window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', result);
   }
 };
 
