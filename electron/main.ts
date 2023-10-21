@@ -3,8 +3,9 @@ import { app, BrowserWindow } from 'electron';
 
 import { PUBLIC, DIST_ELECTRON, URL, DIST } from './config';
 import { addWindowHandlers, addIPCHandlers } from './handlers';
+import activeWindow from './activeWindow';
 
-let window: BrowserWindow | null;
+export let window: BrowserWindow | null;
 
 // Important files
 const preload = join(DIST_ELECTRON, 'preload.js');
@@ -28,4 +29,6 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
+
+  activeWindow.interval.start();
 });

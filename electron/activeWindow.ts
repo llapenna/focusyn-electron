@@ -1,5 +1,27 @@
 import activeWin from 'active-win';
+
 import { window } from './main';
+import { INTERVAL_TIME } from './config';
+
+let interval: NodeJS.Timeout | null = null;
+
+/**
+ * Starts the interval to check for active windows
+ */
+const start = () => {
+  if (!interval) {
+    interval = setInterval(send, INTERVAL_TIME);
+  }
+};
+/**
+ * Stops the interval to check for active windows
+ */
+const stop = () => {
+  if (interval) {
+    clearInterval(interval);
+    interval = null;
+  }
+};
 
 /**
  * Gets a list of all open windows
@@ -23,7 +45,11 @@ const getCurrent = () => {
 const send = (): void => {
   if (window) {
     const result = getCurrent();
-    window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', result);
+    const timestamp = Date.now();
+    window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', {
+      ...result,
+      timestamp,
+    });
   }
 };
 
@@ -31,5 +57,9 @@ const activeWindow = {
   getCurrent,
   getAll,
   send,
+  interval: {
+    start,
+    stop,
+  },
 };
 export default activeWindow;

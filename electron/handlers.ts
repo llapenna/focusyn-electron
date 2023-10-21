@@ -26,6 +26,11 @@ export const addWindowHandlers = (window: BrowserWindow | null) => {
       window.focus();
     }
   });
+
+  // Stop the active-window check interval when the app is quitting
+  app.on('quit', () => {
+    activeWindow.interval.stop();
+  });
 };
 
 /**
