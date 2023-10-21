@@ -1,12 +1,15 @@
 import { BrowserWindow, app, ipcMain } from 'electron';
 
 import activeWindow from './activeWindow';
+import { IS_DEV } from './config';
 
 /**
  * Adds handlers to the Electron App
  * @param window Current window
  */
 export const addWindowHandlers = (window: BrowserWindow | null) => {
+  if (IS_DEV) window?.webContents.openDevTools();
+
   // On Windows and Linux, exiting all windows generally quits an application entirely.
   // On macOS however, exiting all windows does not quit an application
   // https://www.electronjs.org/docs/latest/api/app#event-window-all-closed
