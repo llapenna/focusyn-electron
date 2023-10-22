@@ -17,3 +17,16 @@ export const URL = process.env['VITE_DEV_SERVER_URL'];
  * Is the current environment development?
  */
 export const IS_DEV = isdev;
+
+/**
+ * Is the OS macOS?
+ */
+export const IS_MAC = process.platform === 'darwin';
+/**
+ * Is the OS Windows?
+ */
+export const IS_WIN = process.platform === 'win32';
+/**
+ * Is the OS Linux?
+ */
+export const IS_LINUX = process.platform === 'linux';
