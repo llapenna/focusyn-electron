@@ -15,7 +15,8 @@ export const addWindowHandlers = (window: BrowserWindow | null) => {
   // https://www.electronjs.org/docs/latest/api/app#event-window-all-closed
   app.on('window-all-closed', () => {
     window = null;
-    if (process.platform !== 'darwin') app.quit();
+    // TODO: quit the app on windows/linux, but not on mac
+    app.quit();
   });
 
   // Focus on the main window if the user tried to open another
