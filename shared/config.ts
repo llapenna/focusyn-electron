@@ -1,4 +1,6 @@
+import { segToMs } from './time';
+
 /**
- * How often should the active window be checked?
+ * How often should the active window be checked? (in milliseconds)
  */
-export const INTERVAL_TIME = 5 * 1000;
+export const INTERVAL_TIME = segToMs(5);
