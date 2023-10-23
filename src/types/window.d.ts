@@ -6,4 +6,11 @@ declare global {
       subscribe: ActiveWindow.Subscribe;
     };
   }
+
+  interface String {
+    /**
+     * Converts a string to a color.
+     */
+    toColor: () => string;
+  }
 }
