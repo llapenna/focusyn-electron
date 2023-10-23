@@ -3,7 +3,7 @@ import { app, BrowserWindow } from 'electron';
 
 import { PUBLIC, DIST_ELECTRON, URL, DIST } from './config';
 import { addWindowHandlers, addIPCHandlers } from './handlers';
-import activeWindow from './activeWindow';
+import activeWindow from './services/activeWindow';
 
 export let window: BrowserWindow | null;
 

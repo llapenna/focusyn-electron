@@ -1,6 +1,6 @@
 import { BrowserWindow, app, ipcMain } from 'electron';
 
-import activeWindow from './activeWindow';
+import activeWindow from './services/activeWindow';
 import { IS_DEV } from './config';
 
 /**

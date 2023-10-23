@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
+
 import type { IPC } from '@/shared/types/utils';
 /**
  * Expose protected methods that allow the renderer process to use node modules and methods

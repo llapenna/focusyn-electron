@@ -1,7 +1,8 @@
 import activeWin from 'active-win';
 
-import { window } from './main';
 import { INTERVAL_TIME } from '@/shared/config';
+
+import { window } from '../main';
 
 let interval: NodeJS.Timeout | null = null;
 
@@ -37,8 +38,12 @@ const getCurrent = () => {
 const send = (): void => {
   if (window) {
     const result = getCurrent();
-    // const timestamp = Date.now();
-    window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', result);
+    const timestamp = Date.now();
+
+    window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', {
+      ...result,
+      timestamp,
+    });
   }
 };
 
