@@ -24,14 +24,6 @@ const stop = () => {
 };
 
 /**
- * Gets a list of all open windows
- * @returns Array of all open windows
- */
-const getAll = () => {
-  return activeWin.getOpenWindows();
-};
-
-/**
  * Gets the current active window
  * @returns Active window
  */
@@ -52,7 +44,6 @@ const send = (): void => {
 
 const activeWindow = {
   getCurrent,
-  getAll,
   send,
   interval: {
     start,
