@@ -10,7 +10,7 @@ export namespace ActiveWindow {
   export interface IdleResult extends BaseResult {
     title: 'IDLE';
     owner: {
-      app: 'IDLE';
+      name: 'IDLE';
     };
   }
   export type Result = GenericResult | IdleResult;

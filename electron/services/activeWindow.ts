@@ -42,7 +42,7 @@ const generateIdleState = (): ActiveWindow.IdleResult => ({
   title: 'IDLE',
   timestamp: Date.now(),
   owner: {
-    app: 'IDLE',
+    name: 'IDLE',
   },
 });
 
