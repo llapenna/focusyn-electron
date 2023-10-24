@@ -1,6 +1,8 @@
 import activeWin from 'active-win';
+import { powerMonitor } from 'electron';
 
-import { INTERVAL_TIME } from '@/shared/config';
+import { IDLE_TIME, INTERVAL_TIME } from '@/shared/config';
+import { ActiveWindow } from '@/shared/types/activeWindow';
 
 import { window } from '../main';
 
@@ -28,27 +30,41 @@ const stop = () => {
  * Gets the current active window
  * @returns Active window
  */
-const getCurrent = () => {
+const getCurrentWindow = () => {
   return activeWin.sync();
 };
+
+/**
+ * Generates a fake idle state window
+ * @returns Idle state window
+ */
+const generateIdleState = (): ActiveWindow.IdleResult => ({
+  title: 'IDLE',
+  timestamp: Date.now(),
+  owner: {
+    app: 'IDLE',
+  },
+});
 
 /**
  * Sends the current active window to the renderer (React) process
  */
 const send = (): void => {
   if (window) {
-    const result = getCurrent();
-    const timestamp = Date.now();
+    const isIdle = powerMonitor.getSystemIdleState(IDLE_TIME) === 'idle';
 
-    window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', {
-      ...result,
-      timestamp,
-    });
+    if (isIdle)
+      window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', generateIdleState());
+    else
+      window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', {
+        ...getCurrentWindow(),
+        timestamp: Date.now(),
+      });
   }
 };
 
 const activeWindow = {
-  getCurrent,
+  getCurrent: getCurrentWindow,
   send,
   interval: {
     start,
