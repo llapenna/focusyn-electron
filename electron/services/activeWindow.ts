@@ -39,10 +39,10 @@ const getCurrentWindow = () => {
  * @returns Idle state window
  */
 const generateIdleState = (): ActiveWindow.IdleResult => ({
-  title: 'IDLE',
+  title: 'Idle',
   timestamp: Date.now(),
   owner: {
-    name: 'IDLE',
+    name: 'Idle',
   },
 });
 

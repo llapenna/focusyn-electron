@@ -8,9 +8,9 @@ export namespace ActiveWindow {
 
   export interface GenericResult extends activeWindow.Result, BaseResult {}
   export interface IdleResult extends BaseResult {
-    title: 'IDLE';
+    title: 'Idle';
     owner: {
-      name: 'IDLE';
+      name: 'Idle';
     };
   }
   export type Result = GenericResult | IdleResult;
