@@ -55,11 +55,10 @@ const send = (): void => {
 
     if (isIdle)
       window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', generateIdleState());
-    else
-      window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', {
-        ...getCurrentWindow(),
-        timestamp: Date.now(),
-      });
+    else {
+      const win = { ...getCurrentWindow(), timestamp: Date.now() };
+      if (win) window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', win);
+    }
   }
 };
 
