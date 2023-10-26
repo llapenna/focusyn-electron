@@ -56,8 +56,10 @@ const send = (): void => {
     if (isIdle)
       window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', generateIdleState());
     else {
-      const win = { ...getCurrentWindow(), timestamp: Date.now() };
-      if (win) window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', win);
+      const result = getCurrentWindow();
+      const win = { ...result, timestamp: Date.now() };
+
+      if (result) window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', win);
     }
   }
 };
