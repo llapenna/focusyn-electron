@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import './App.css';
+
+import '@/reactapp/utils/colors';
+
+import activeWindow from '@/reactapp/services/activeWindow';
+import { Doughnut } from '@/reactapp/components/charts';
+import { ActiveWindow } from '@/shared/types/activeWindow';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState<ActiveWindow.Result[]>([]);
+  const total = activeWindow.getTotalTime(count);
+
+  useEffect(() => {
+    activeWindow.subscribe((_, window) => {
+      if (window)
+        setCount((state) => {
+          return [...state, window];
+        });
+    });
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main>
+      <h1>Active Window</h1>
+      <h2>Total: {total}</h2>
+      <Doughnut data={activeWindow.countByName(count)}></Doughnut>
+    </main>
+  );
 }
 
-export default App
+export default App;
