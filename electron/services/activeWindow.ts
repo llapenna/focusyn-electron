@@ -43,7 +43,16 @@ const generateIdleState = (): ActiveWindow.IdleResult => ({
   timestamp: Date.now(),
   owner: {
     name: 'Idle',
+    processId: 0,
   },
+  id: 0,
+  bounds: {
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  },
+  memoryUsage: 0,
 });
 
 /**

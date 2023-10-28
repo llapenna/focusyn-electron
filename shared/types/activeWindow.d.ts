@@ -1,10 +1,13 @@
-import activeWindow from 'active-win';
+import activeWinLib from 'active-win';
 import type { IPC } from './utils';
 
 export namespace ActiveWindow {
   // POSSIBLE RESULTS
-  export type WindowResult = activeWindow.Result;
-  export interface IdleResult extends activeWindow.BaseResult {
+  interface BaseResult extends activeWinLib.BaseResult {
+    timestamp: number;
+  }
+  export interface WindowResult extends activeWinLib.Result, BaseResult {}
+  export interface IdleResult extends BaseResult {
     title: 'Idle';
     owner: {
       name: 'Idle';
