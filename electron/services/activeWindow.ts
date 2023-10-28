@@ -31,7 +31,7 @@ const stop = () => {
  * @returns Active window
  */
 const getCurrentWindow = () => {
-  return activeWin.sync();
+  return activeWin();
 };
 
 /**
@@ -49,14 +49,14 @@ const generateIdleState = (): ActiveWindow.IdleResult => ({
 /**
  * Sends the current active window to the renderer (React) process
  */
-const send = (): void => {
+const send = async (): Promise<void> => {
   if (window) {
     const isIdle = powerMonitor.getSystemIdleState(IDLE_TIME) === 'idle';
 
     if (isIdle)
       window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', generateIdleState());
     else {
-      const result = getCurrentWindow();
+      const result = await getCurrentWindow();
       const win = { ...result, timestamp: Date.now() };
 
       if (result) window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', win);
