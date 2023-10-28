@@ -35,8 +35,7 @@ const countByName = (arr: ActiveWindow.Result[]): Record<string, number> => {
  */
 const getTotalTime = (arr: ActiveWindow.Result[]): string => {
   const time =
-    arr.filter((item) => (item as any).owner.name !== 'Idle').length *
-    INTERVAL_TIME;
+    arr.filter((item) => item.owner.name !== 'Idle').length * INTERVAL_TIME;
 
   return getFormattedTime(time);
 };

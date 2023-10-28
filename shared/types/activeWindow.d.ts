@@ -2,18 +2,17 @@ import activeWindow from 'active-win';
 import type { IPC } from './utils';
 
 export namespace ActiveWindow {
-  interface BaseResult {
-    timestamp: number;
-  }
-
-  export interface GenericResult extends activeWindow.Result, BaseResult {}
-  export interface IdleResult extends BaseResult {
+  // POSSIBLE RESULTS
+  export type WindowResult = activeWindow.Result;
+  export interface IdleResult extends activeWindow.BaseResult {
     title: 'Idle';
     owner: {
       name: 'Idle';
+      processId: 0;
     };
   }
-  export type Result = GenericResult | IdleResult;
+  export type Result = WindowResult | IdleResult;
+
   export type Callback = IPC.SubscribeCallback<Result | undefined>;
   export type Subscribe = (callback: Callback) => void;
 }
