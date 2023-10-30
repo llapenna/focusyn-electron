@@ -15,6 +15,7 @@ export namespace ActiveWindow {
     };
   }
   export type Result = WindowResult | IdleResult;
+  export type Grouped = Result & { count: number };
 
   export type Callback = IPC.SubscribeCallback<Result | undefined>;
   export type Subscribe = (callback: Callback) => void;
