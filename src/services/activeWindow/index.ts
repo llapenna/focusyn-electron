@@ -2,7 +2,7 @@ import iteratee from 'lodash-es/iteratee';
 
 import type { ActiveWindow } from '@/shared/types/activeWindow';
 import { INTERVAL_TIME } from '@/shared/config';
-import { msToSeg } from '@/shared/time';
+import { msToSeg, segToMs } from '@/shared/time';
 import checkPreload from '@/reactapp/utils/checkPreload';
 import { getFormattedTime } from '@/reactapp/utils/time';
 
@@ -22,7 +22,8 @@ const getTotalTime = (arr: ActiveWindow.Result[]): string => {
     arr.filter((item) => item.owner.name !== 'Idle').length *
     msToSeg(INTERVAL_TIME);
 
-  return getFormattedTime(time);
+  const ms = segToMs(time);
+  return getFormattedTime(ms);
 };
 
 /**
