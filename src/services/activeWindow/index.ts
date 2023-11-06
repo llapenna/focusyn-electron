@@ -92,8 +92,8 @@ const groupBy: GroupByFunction = (
     const compared = getComparedEntry(result, window, { by, consecutive });
 
     // If the entry already exists, increment the count
-    if (compared) compared.count++;
-    else result.push({ ...window, count: 1 });
+    if (compared) compared.group.count++;
+    else result.push({ ...window, group: { count: 1, by } });
   }
 
   return result;
