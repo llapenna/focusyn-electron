@@ -11,8 +11,8 @@ import {
 import { Bar as BarChart } from 'react-chartjs-2';
 
 import { getFormattedTime } from '@/reactapp/utils/time';
+import type { ChartProps } from '@/reactapp/types/chart';
 import { segToMs } from '@/shared/time';
-import { ActiveWindow } from '@/shared/types/activeWindow';
 
 import dataToDataset from './utils';
 
@@ -25,11 +25,7 @@ ChartJS.register(
   Legend
 );
 
-interface Props {
-  data: ActiveWindow.Grouped[];
-}
-
-export const Stacked = ({ data }: Props) => {
+export const Stacked = ({ data }: ChartProps) => {
   const formattedData = dataToDataset.bars(data);
 
   const options: ChartOptions<'bar'> = {

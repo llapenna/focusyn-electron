@@ -9,17 +9,13 @@ import { Doughnut as DoughnutChart } from 'react-chartjs-2';
 
 import { getFormattedTime } from '@/reactapp/utils/time';
 import { segToMs } from '@/shared/time';
-import { ActiveWindow } from '@/shared/types/activeWindow';
+import type { ChartProps } from '@/reactapp/types/chart';
 
 import dataToDataset from './utils';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-interface Props {
-  data: ActiveWindow.Grouped[];
-}
-
-export const Doughnut = ({ data }: Props) => {
+export const Doughnut = ({ data }: ChartProps) => {
   const formattedData = dataToDataset.doughnut(data);
   const options: ChartOptions<'doughnut'> = {
     plugins: {
