@@ -1,4 +1,3 @@
-import { iteratee } from 'lodash-es';
 import type { ChartData } from 'chart.js';
 
 import { INTERVAL_TIME } from '@/shared/config';
@@ -30,7 +29,7 @@ const barsDataset = (windowData: ActiveWindow.Grouped[]): ChartData<'bar'> => {
       label: `${owner.name}-${timestamp}`,
       data: [group.count * msToSeg(INTERVAL_TIME)],
       backgroundColor: owner.name.toColor(),
-      barThickness: 150,
+      barThickness: 100,
     })
   );
 
