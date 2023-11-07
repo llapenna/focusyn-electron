@@ -13,7 +13,7 @@ import { Bar as BarChart } from 'react-chartjs-2';
 import { getFormattedTime } from '@/reactapp/utils/time';
 import type { ChartProps } from '@/reactapp/types/chart';
 import { INTERVAL_TIME } from '@/shared/config';
-import { msToSeg, segToMs } from '@/shared/time';
+import { hourToSec, msToSec, secToMs } from '@/shared/time';
 
 import dataToDataset from './utils';
 
@@ -26,7 +26,11 @@ ChartJS.register(
   Legend
 );
 
-export const Stacked = ({ data }: ChartProps) => {
+interface Props extends ChartProps {
+  max: 'full' | 'minimum';
+}
+
+export const Stacked = ({ data, max = 'full' }: Props) => {
   const formattedData = dataToDataset.bars(data);
 
   const options: ChartOptions<'bar'> = {
@@ -40,15 +44,16 @@ export const Stacked = ({ data }: ChartProps) => {
         stacked: true,
         grace: 0,
         ticks: {
-          stepSize: msToSeg(INTERVAL_TIME),
+          stepSize: msToSec(INTERVAL_TIME),
         },
+        suggestedMax: max === 'full' ? undefined : hourToSec(24),
       },
       y: {
         beginAtZero: true,
         stacked: true,
         grace: 0,
         ticks: {
-          stepSize: msToSeg(INTERVAL_TIME),
+          stepSize: msToSec(INTERVAL_TIME),
         },
       },
     },
@@ -60,7 +65,7 @@ export const Stacked = ({ data }: ChartProps) => {
         callbacks: {
           label(ctx) {
             const rawLabel = ctx.dataset.label ?? '';
-            const ms = segToMs(ctx.raw as number);
+            const ms = secToMs(ctx.raw as number);
 
             const label = rawLabel.split('-')[0] ?? 'unknown';
             const formattedTime = getFormattedTime(ms);
