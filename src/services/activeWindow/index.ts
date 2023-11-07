@@ -2,9 +2,8 @@ import iteratee from 'lodash-es/iteratee';
 
 import type { ActiveWindow } from '@/shared/types/activeWindow';
 import { INTERVAL_TIME } from '@/shared/config';
-import { msToSeg, segToMs } from '@/shared/time';
+import { msToSeg } from '@/shared/time';
 import checkPreload from '@/reactapp/utils/checkPreload';
-import { getFormattedTime } from '@/reactapp/utils/time';
 
 import type {
   GroupByFunction,
@@ -15,15 +14,13 @@ import type {
 /**
  * Calculates the total time of all active windows, excluding the idle time
  * @param arr Array containing the list of active windows
- * @returns Total time formatted in hh:mm:ss
+ * @returns Total time number in seconds
  */
-const getTotalTime = (arr: ActiveWindow.Result[]): string => {
-  const time =
+const getTotalTime = (arr: ActiveWindow.Result[]): number => {
+  return (
     arr.filter((item) => item.owner.name !== 'Idle').length *
-    msToSeg(INTERVAL_TIME);
-
-  const ms = segToMs(time);
-  return getFormattedTime(ms);
+    msToSeg(INTERVAL_TIME)
+  );
 };
 
 /**
