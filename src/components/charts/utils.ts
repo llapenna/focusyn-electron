@@ -37,31 +37,9 @@ const barsDataset = (windowData: ActiveWindow.Grouped[]): ChartData<'bar'> => {
   return { labels, datasets };
 };
 
-const test = (windowData: ActiveWindow.Grouped[]) => {
-  void windowData;
-  const datasets = windowData.map((window) => {
-    const { group, timestamp } = window;
-    const groupValue = iteratee(group.by)(window) as string;
-
-    return {
-      label: `${groupValue}-${timestamp}`,
-      data: [
-        {
-          x: group.count * msToSeg(INTERVAL_TIME),
-          y: group.count * msToSeg(INTERVAL_TIME),
-        },
-      ],
-      backgroundColor: groupValue.toColor(),
-    };
-  });
-
-  return { datasets };
-};
-
 const dataToDataset = {
   doughnut: doughnutDataset,
   bars: barsDataset,
-  test,
 };
 
 export default dataToDataset;
