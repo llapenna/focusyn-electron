@@ -32,5 +32,9 @@ export const Doughnut = ({ data }: ChartProps) => {
       },
     },
   };
-  return <DoughnutChart options={options} data={formattedData}></DoughnutChart>;
+  return (
+    <div>
+      <DoughnutChart options={options} data={formattedData}></DoughnutChart>
+    </div>
+  );
 };
