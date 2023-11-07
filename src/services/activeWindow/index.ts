@@ -2,7 +2,7 @@ import iteratee from 'lodash-es/iteratee';
 
 import type { ActiveWindow } from '@/shared/types/activeWindow';
 import { INTERVAL_TIME } from '@/shared/config';
-import { msToSeg } from '@/shared/time';
+import { msToSec } from '@/shared/time';
 import checkPreload from '@/reactapp/utils/checkPreload';
 
 import type {
@@ -19,7 +19,7 @@ import type {
 const getTotalTime = (arr: ActiveWindow.Result[]): number => {
   return (
     arr.filter((item) => item.owner.name !== 'Idle').length *
-    msToSeg(INTERVAL_TIME)
+    msToSec(INTERVAL_TIME)
   );
 };
 

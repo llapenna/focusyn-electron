@@ -8,7 +8,7 @@ import {
 import { Doughnut as DoughnutChart } from 'react-chartjs-2';
 
 import { getFormattedTime } from '@/reactapp/utils/time';
-import { segToMs } from '@/shared/time';
+import { secToMs } from '@/shared/time';
 import type { ChartProps } from '@/reactapp/types/chart';
 
 import dataToDataset from './utils';
@@ -24,7 +24,7 @@ export const Doughnut = ({ data }: ChartProps) => {
         callbacks: {
           label(this, item) {
             const value = item.raw as number;
-            const ms = segToMs(value);
+            const ms = secToMs(value);
 
             return 'Time: ' + getFormattedTime(ms);
           },

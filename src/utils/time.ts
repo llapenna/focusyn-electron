@@ -1,4 +1,4 @@
-import { segToMs } from '@/shared/time';
+import { secToMs } from '@/shared/time';
 
 /**
  * Helper function to convert a number to a `Date` object.
@@ -7,7 +7,7 @@ import { segToMs } from '@/shared/time';
  * @returns A `Date` object.
  */
 const numberToDate = (time: number, format: 'ms' | 's'): Date => {
-  return new Date(format === 'ms' ? time : segToMs(time));
+  return new Date(format === 'ms' ? time : secToMs(time));
 };
 
 /**
