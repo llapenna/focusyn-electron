@@ -12,7 +12,8 @@ import { Bar as BarChart } from 'react-chartjs-2';
 
 import { getFormattedTime } from '@/reactapp/utils/time';
 import type { ChartProps } from '@/reactapp/types/chart';
-import { segToMs } from '@/shared/time';
+import { INTERVAL_TIME } from '@/shared/config';
+import { msToSeg, segToMs } from '@/shared/time';
 
 import dataToDataset from './utils';
 
@@ -31,12 +32,24 @@ export const Stacked = ({ data }: ChartProps) => {
   const options: ChartOptions<'bar'> = {
     indexAxis: 'y' as const,
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       x: {
+        display: false,
+        beginAtZero: true,
         stacked: true,
+        grace: 0,
+        ticks: {
+          stepSize: msToSeg(INTERVAL_TIME),
+        },
       },
       y: {
+        beginAtZero: true,
         stacked: true,
+        grace: 0,
+        ticks: {
+          stepSize: msToSeg(INTERVAL_TIME),
+        },
       },
     },
     plugins: {
