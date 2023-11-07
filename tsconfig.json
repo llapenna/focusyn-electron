@@ -19,6 +19,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
 
     /* Project folders */
     "baseUrl": "./",
@@ -26,6 +35,7 @@
       "@/reactapp/components/*": ["src/components/*"],
       "@/reactapp/utils/*": ["src/utils/*"],
       "@/reactapp/services/*": ["src/services/*"],
+      "@/reactapp/types/*": ["src/types/*"],
       "@/shared/*": ["shared/*"]
     }
   },
