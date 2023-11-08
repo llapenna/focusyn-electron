@@ -39,6 +39,6 @@
       "@/shared/*": ["shared/*"]
     }
   },
-  "include": ["src", "electron", "shared"],
+  "include": ["src", "electron", "shared", "styled-system"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
