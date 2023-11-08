@@ -36,6 +36,7 @@
       "@/reactapp/utils/*": ["src/utils/*"],
       "@/reactapp/services/*": ["src/services/*"],
       "@/reactapp/types/*": ["src/types/*"],
+      "@/reactapp/styled/*": ["src/styled/*"],
       "@/shared/*": ["shared/*"]
     }
   },
