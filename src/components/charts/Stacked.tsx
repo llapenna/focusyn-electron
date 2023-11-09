@@ -27,7 +27,7 @@ ChartJS.register(
 );
 
 interface Props extends ChartProps {
-  max: 'full' | 'minimum';
+  max?: 'full' | 'minimum';
 }
 
 export const Stacked = ({ data, max = 'full' }: Props) => {
