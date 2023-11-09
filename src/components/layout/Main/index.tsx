@@ -1,6 +1,6 @@
-import Container from "../Container";
+import Container from '../Container';
 
-import { main } from "./Main.styles";
+import { main } from './styles';
 
 interface Props {
   children: React.ReactNode;
