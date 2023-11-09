@@ -1,4 +1,4 @@
-import { defineTokens } from '@pandacss/dev';
+import { defineTokens, defineSemanticTokens } from '@pandacss/dev';
 import type { ExtendableOptions } from '@pandacss/types';
 
 // --------------------
@@ -40,11 +40,41 @@ const fontSizes = defineTokens.fontSizes({
   xxl: { value: '96px' },
 });
 
+// --------------------
+// RADII
+// --------------------
+const radii = defineTokens.radii({
+  sm: { value: '4px' },
+  md: { value: '8px' },
+  lg: { value: '16px' },
+});
+
+// --------------------
+// COLORS
+// --------------------
+const colors = defineTokens.colors({
+  gray: {
+    50: { value: '#f9fafb' },
+    200: { value: '#e5e7eb' },
+  },
+  white: { value: '#ffffff' },
+});
+const semanticColors = defineSemanticTokens.colors({
+  background: { value: '{colors.gray.50}' },
+  overlay: { value: '{colors.white}' },
+  overlayBorder: { value: '{colors.gray.200}' },
+});
+
 const theme: ExtendableOptions['theme'] = {
   tokens: {
     spacing,
     sizes,
     fontSizes,
+    radii,
+    colors,
+  },
+  semanticTokens: {
+    colors: semanticColors,
   },
 };
 export default theme;
