@@ -1,14 +1,18 @@
-import type { FC, ReactNode } from 'react';
-import main from './Main.styles';
+import Container from "../Container";
+
+import { main } from "./Main.styles";
 
 interface Props {
-  children: ReactNode;
+  children: React.ReactNode;
 }
-const Main: FC<Props> = ({ children }) => {
+const Main: React.FC<Props> = ({ children }) => {
+  const classes = main();
   return (
-    <main className={main()}>
-      <h1>Focusyn</h1>
-      {children}
+    <main className={classes.wrapper}>
+      <Container>
+        <h1 className={classes.title}>Focusyn</h1>
+      </Container>
+      <Container>{children}</Container>
     </main>
   );
 };

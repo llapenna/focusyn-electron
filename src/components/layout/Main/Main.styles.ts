@@ -1,17 +1,22 @@
-import { cva } from '@/reactapp/styled/css';
+import { sva } from '@/reactapp/styled/css';
 
-const main = cva({
+export const main = sva({
+  slots: ['wrapper', 'title'],
   base: {
-    display: 'flex',
-    flexDirection: 'column',
+    wrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'stretch',
+      gap: 'sm',
 
-    padding: 'lg',
+      p: 'lg',
 
-    '& h1': {
-      fontSize: 'lg',
+      backgroundColor: 'background',
+    },
+    title: {
+      fontSize: 'md',
       fontWeight: 'bold',
+      textAlign: 'center',
     },
   },
 });
-
-export default main;
