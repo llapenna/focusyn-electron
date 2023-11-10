@@ -56,6 +56,7 @@ const colors = defineTokens.colors({
   gray: {
     50: { value: '#f9fafb' },
     200: { value: '#e5e7eb' },
+    500: { value: '#6b7280' },
   },
   white: { value: '#ffffff' },
 });
@@ -63,6 +64,7 @@ const semanticColors = defineSemanticTokens.colors({
   background: { value: '{colors.gray.50}' },
   overlay: { value: '{colors.white}' },
   overlayBorder: { value: '{colors.gray.200}' },
+  subtleBorder: { value: '{colors.gray.500}' },
 });
 
 const theme: ExtendableOptions['theme'] = {
