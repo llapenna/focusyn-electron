@@ -1,13 +1,17 @@
-import { container } from './styles';
+import { ContainerVariants, container } from './styles';
 
-interface Props {
+type Props = ContainerVariants & {
   children: React.ReactNode;
   as?: 'div' | 'main' | 'section' | 'article' | 'aside' | 'header' | 'footer';
-}
+};
 
-const Container: React.FC<Props> = ({ children, as = 'div' }) => {
+const Container: React.FC<Props> = ({
+  children,
+  as = 'div',
+  type = 'main',
+}) => {
   const Component = as;
-  return <Component className={container()}>{children}</Component>;
+  return <Component className={container({ type })}>{children}</Component>;
 };
 
 export default Container;
