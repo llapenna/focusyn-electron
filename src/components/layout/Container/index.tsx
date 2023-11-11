@@ -9,9 +9,14 @@ const Container: React.FC<Props> = ({
   children,
   as = 'div',
   type = 'main',
+  orientation = 'vertical',
 }) => {
   const Component = as;
-  return <Component className={container({ type })}>{children}</Component>;
+  return (
+    <Component className={container({ type, orientation })}>
+      {children}
+    </Component>
+  );
 };
 
 export default Container;

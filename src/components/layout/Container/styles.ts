@@ -3,7 +3,6 @@ import { RecipeVariantProps, cva } from '@/reactapp/styled/css';
 export const container = cva({
   base: {
     display: 'flex',
-    flexDirection: 'column',
     gap: 'sm',
 
     backgroundColor: 'overlay',
@@ -25,9 +24,18 @@ export const container = cva({
         borderRadius: 'md',
       },
     },
+    orientation: {
+      vertical: {
+        flexDirection: 'column',
+      },
+      horizontal: {
+        flexDirection: 'horizontal',
+      },
+    },
   },
   defaultVariants: {
     type: 'main',
+    orientation: 'vertical',
   },
 });
 
