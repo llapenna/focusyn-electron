@@ -27,7 +27,7 @@ ChartJS.register(
 );
 
 interface Props extends ChartProps {
-  max: 'full' | 'minimum';
+  max?: 'full' | 'minimum';
 }
 
 export const Stacked = ({ data, max = 'full' }: Props) => {
@@ -40,18 +40,14 @@ export const Stacked = ({ data, max = 'full' }: Props) => {
     scales: {
       x: {
         display: false,
-        beginAtZero: true,
         stacked: true,
-        grace: 0,
         ticks: {
           stepSize: msToSec(INTERVAL_TIME),
         },
         suggestedMax: max === 'full' ? undefined : hourToSec(24),
       },
       y: {
-        beginAtZero: true,
         stacked: true,
-        grace: 0,
         ticks: {
           stepSize: msToSec(INTERVAL_TIME),
         },
