@@ -41,6 +41,15 @@ const fontSizes = defineTokens.fontSizes({
 });
 
 // --------------------
+// FONT WEIGHTS
+// --------------------
+const fontWeights = defineTokens.fontWeights({
+  light: { value: 300 },
+  normal: { value: 400 },
+  bold: { value: 700 },
+});
+
+// --------------------
 // RADII
 // --------------------
 const radii = defineTokens.radii({
@@ -64,7 +73,20 @@ const semanticColors = defineSemanticTokens.colors({
   background: { value: '{colors.gray.50}' },
   overlay: { value: '{colors.white}' },
   overlayBorder: { value: '{colors.gray.200}' },
-  subtleBorder: { value: '{colors.gray.500}' },
+  subtleBorder: { value: '{colors.gray.200}' },
+});
+
+// --------------------
+// SHADOWS
+// --------------------
+const shadows = defineTokens.shadows({
+  sm: { value: '2px 2px 4px 0px rgba(0,0,0,0.1)' },
+  md: { value: '0px 4px 8px 0px rgba(0,0,0,0.1)' },
+  lg: { value: '0px 8px 16px 0px rgba(0,0,0,0.1)' },
+});
+const semanticShadows = defineTokens.shadows({
+  subtle: { value: '{shadows.sm}' },
+  main: { value: '{shadows.md}' },
 });
 
 const theme: ExtendableOptions['theme'] = {
@@ -74,9 +96,12 @@ const theme: ExtendableOptions['theme'] = {
     fontSizes,
     radii,
     colors,
+    shadows,
+    fontWeights,
   },
   semanticTokens: {
     colors: semanticColors,
+    shadows: semanticShadows,
   },
 };
 export default theme;
