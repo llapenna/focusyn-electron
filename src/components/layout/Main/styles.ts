@@ -12,11 +12,14 @@ export const main = sva({
       p: 'lg',
 
       backgroundColor: 'background',
+
+      minHeight: 'fullHeight',
     },
     title: {
       fontSize: 'md',
       fontWeight: 'bold',
       textAlign: 'center',
+      lineHeight: 0.75,
     },
   },
 });

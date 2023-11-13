@@ -25,6 +25,8 @@ const sizes = defineTokens.sizes({
   md: { value: '32px' },
   lg: { value: '48px' },
   xl: { value: '64px' },
+  fullHeight: { value: '100vh' },
+  fullWidth: { value: '100vw' },
 });
 
 // --------------------
@@ -65,6 +67,8 @@ const colors = defineTokens.colors({
   gray: {
     50: { value: '#f9fafb' },
     200: { value: '#e5e7eb' },
+    300: { value: '#d1d5db' },
+    400: { value: '#9ca3af' },
     500: { value: '#6b7280' },
   },
   white: { value: '#ffffff' },
