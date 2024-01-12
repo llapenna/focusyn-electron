@@ -1,7 +1,6 @@
 import { hstack, vstack } from '@/reactapp/styled/patterns';
 
 import activeWindow from '@/reactapp/services/activeWindow';
-import { getTimeUnits } from '@/reactapp/utils/time';
 import { Doughnut, Stacked } from '@/reactapp/components/charts';
 
 import { ActiveWindow } from '@/shared/types/activeWindow';
@@ -13,10 +12,6 @@ interface Props {
 }
 
 export const ChartContainer: React.FC<Props> = ({ windows }) => {
-  void windows;
-  const total = activeWindow.getTotalTime(windows);
-  const formattedTotal = getTimeUnits(total, 's');
-
   const data = {
     doughnut: activeWindow.groupBy(windows, { by: 'owner.name' }),
     stacked: activeWindow.groupBy(windows, {
@@ -28,8 +23,8 @@ export const ChartContainer: React.FC<Props> = ({ windows }) => {
   return (
     <>
       <div className={hstack({ justify: 'space-evenly' })}>
-        <Total title="TOTAL" value={formattedTotal}></Total>
-        <Total title="IDLE" value={formattedTotal}></Total>
+        <Total title="ACTIVE" type="active" values={windows}></Total>
+        <Total title="IDLE" type="idle" values={windows}></Total>
       </div>
       <div className={vstack()}>
         <Doughnut data={data.doughnut}></Doughnut>

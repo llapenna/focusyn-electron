@@ -1,5 +1,8 @@
 import { Container } from '@/reactapp/components/layout';
-import type { TimeUnits } from '@/reactapp/types/time';
+
+import { ActiveWindow } from '@/shared/types/activeWindow';
+import activeWindow from '@/reactapp/services/activeWindow';
+import { getTimeUnits } from '@/reactapp/utils/time';
 
 import { total } from './styles';
 
@@ -20,10 +23,14 @@ const Unit: React.FC<UnitProps> = ({ value, unit }) => {
 
 interface Props {
   title: string;
-  value: TimeUnits;
+  values: ActiveWindow.Result[];
+  type: 'idle' | 'active' | 'both';
 }
-export const Total: React.FC<Props> = ({ title, value }) => {
+export const Total: React.FC<Props> = ({ title, values, type }) => {
   const classes = total();
+
+  const totalValue = activeWindow.getTotalTime(values, type);
+  const value = getTimeUnits(totalValue, 's');
 
   return (
     <Container type="subtle">
