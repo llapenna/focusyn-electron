@@ -25,8 +25,18 @@ const sizes = defineTokens.sizes({
   md: { value: '32px' },
   lg: { value: '48px' },
   xl: { value: '64px' },
-  fullHeight: { value: '100vh' },
+  // width
+  w100: { value: '100%' },
+  w75: { value: '75%' },
+  w50: { value: '50%' },
+  w25: { value: '25%' },
   fullWidth: { value: '100vw' },
+  // height
+  h100: { value: '100%' },
+  h75: { value: '75%' },
+  h50: { value: '50%' },
+  h25: { value: '25%' },
+  fullHeight: { value: '100vh' },
 });
 
 // --------------------
