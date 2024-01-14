@@ -27,8 +27,8 @@ export const ChartContainer: React.FC<Props> = ({ windows }) => {
         <Total title="IDLE" type="idle" values={windows}></Total>
       </div>
       <div className={vstack()}>
-        <Doughnut data={data.doughnut}></Doughnut>
         <Stacked data={data.stacked}></Stacked>
+        <Doughnut data={data.doughnut}></Doughnut>
       </div>
     </>
   );
