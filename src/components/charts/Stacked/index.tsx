@@ -15,7 +15,8 @@ import type { ChartProps } from '@/reactapp/types/chart';
 import { INTERVAL_TIME } from '@/shared/config';
 import { hourToSec, msToSec, secToMs } from '@/shared/time';
 
-import dataToDataset from './utils';
+import dataToDataset from '../utils';
+import { stacked } from './styles';
 
 ChartJS.register(
   CategoryScale,
@@ -40,18 +41,14 @@ export const Stacked = ({ data, max = 'full' }: Props) => {
     scales: {
       x: {
         display: false,
-        beginAtZero: true,
         stacked: true,
-        grace: 0,
         ticks: {
           stepSize: msToSec(INTERVAL_TIME),
         },
         suggestedMax: max === 'full' ? undefined : hourToSec(24),
       },
       y: {
-        beginAtZero: true,
         stacked: true,
-        grace: 0,
         ticks: {
           stepSize: msToSec(INTERVAL_TIME),
         },
@@ -78,7 +75,7 @@ export const Stacked = ({ data, max = 'full' }: Props) => {
   };
 
   return (
-    <div>
+    <div className={stacked()}>
       <BarChart options={options} data={formattedData}></BarChart>
     </div>
   );

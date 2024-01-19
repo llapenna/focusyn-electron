@@ -16,11 +16,20 @@ import type {
  * @param arr Array containing the list of active windows
  * @returns Total time number in seconds
  */
-const getTotalTime = (arr: ActiveWindow.Result[]): number => {
-  return (
-    arr.filter((item) => item.owner.name !== 'Idle').length *
-    msToSec(INTERVAL_TIME)
-  );
+const getTotalTime = (
+  arr: ActiveWindow.Result[],
+  include: 'active' | 'idle' | 'both' = 'active'
+): number => {
+  let resultingArray: ActiveWindow.Result[] = [];
+
+  if (include === 'both') resultingArray = arr;
+  // Include idle or active windows
+  else
+    resultingArray = arr.filter(({ owner }) =>
+      include === 'idle' ? owner.name === 'Idle' : owner.name !== 'Idle'
+    );
+
+  return resultingArray.length * msToSec(INTERVAL_TIME);
 };
 
 /**
