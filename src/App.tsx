@@ -22,7 +22,8 @@ function App() {
 
   return (
     <Main>
-      <ChartContainer windows={count}></ChartContainer>
+      {/* <ChartContainer windows={count}></ChartContainer> */}
+      <Chart></Chart>
     </Main>
   );
 }
