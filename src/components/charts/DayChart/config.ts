@@ -4,7 +4,7 @@ export const sizes = {
   axisH: 50,
 };
 
-export const margins = 10;
+export const margins = 20;
 
 export const chart = {
   // 60 minutes/h * 24h/day = 1440 minutes/day
