@@ -7,8 +7,8 @@ export const useSVGWidth = () => {
   useEffect(() => {
     const getSVGWidth = () => {
       const svg = ref.current;
-      console.log(svg);
       const width = svg?.getBoundingClientRect().width ?? 0;
+
       setWidth(width);
     };
 
