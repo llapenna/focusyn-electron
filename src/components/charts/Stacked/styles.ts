@@ -1,7 +1,7 @@
-import { cva } from "@/reactapp/styled/css";
+import { cva } from '@/reactapp/styled/css';
 
 export const stacked = cva({
   base: {
-    width: "w100",
+    width: 'w100',
   },
 });

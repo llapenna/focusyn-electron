@@ -1,40 +1,36 @@
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import '@/reactapp/utils/colors';
 
-// import activeWindow from '@/reactapp/services/activeWindow';
-// import { ChartContainer } from '@/reactapp/components/charts';
+import activeWindow from '@/reactapp/services/activeWindow';
 import { Main } from '@/reactapp/components/layout';
 
-// import { ActiveWindow } from '@/shared/types/activeWindow';
+import { ActiveWindow } from '@/shared/types/activeWindow';
 import { DayChart } from './components/charts/DayChart';
 
-// import {data as defaultData} from './components/charts/POC/defaults';
-// import { Data, generateRandomData } from './components/charts/POC/mockData';
-
 function App() {
-  // const [count, setCount] = useState<ActiveWindow.Result[]>([]);
-  // const [data, setData] = useState<Data[]>(defaultData);
+  const [count, setCount] = useState<ActiveWindow.Result[]>([]);
 
-  // useEffect(() => {
-  //   activeWindow.subscribe((_, window) => {
-  //     if (window)
-  //       setCount((state) => {
-  //         return [...state, window];
-  //       });
-  //     void window;
-  //   });
-  // }, []);
+  useEffect(() => {
+    activeWindow.subscribe((_, window) => {
+      if (window)
+        setCount((state) => {
+          return [...state, window];
+        });
+      void window;
+    });
+  }, []);
 
-  // const addData = () => {
-  //   setData((d) => [...d, generateRandomData(d.length + 1)]);
-  // };
+  const grouped = activeWindow.groupBy(count, {
+    by: 'owner.name',
+    consecutive: true,
+  });
 
   return (
     <Main>
       {/* <ChartContainer windows={count}></ChartContainer> */}
       {/* <button onClick={addData}>add</button> */}
-      <DayChart data={[]}></DayChart>
+      <DayChart data={grouped}></DayChart>
     </Main>
   );
 }
