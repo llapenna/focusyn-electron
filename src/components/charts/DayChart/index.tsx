@@ -35,12 +35,12 @@ export const DayChart: FC<ChartProps> = ({ data }) => {
       <svg width={sizes.w} height={sizes.h} ref={ref}>
         <Background width={sizes.w} height={sizes.h - sizes.axisH} />
         <Border width={sizes.w} height={sizes.h} />
-        <Group left={margins} top={margins}>
+        <Group left={margins}>
           {filteredData.map((d) => {
             const t = timestampToMinutes(d.timestamp);
 
             const x = xScale(t);
-            const y = margins;
+            const y = 0;
             const height = sizes.h - sizes.axisH;
             const barWidth = chart.step(width) * Math.floor(d.group.count / 60);
             const fill = d.title.toColor();
