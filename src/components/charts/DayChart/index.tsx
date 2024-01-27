@@ -45,7 +45,9 @@ export const DayChart: FC<ChartProps> = ({ data }) => {
             const barWidth = chart.step(width) * Math.floor(d.group.count / 60);
             const fill = d.title.toColor();
 
-            return <rect {...{ x, y, height, width: barWidth, fill }} />;
+            const key = `bar-${d.owner.name}-${d.timestamp}`;
+
+            return <rect {...{ x, y, height, width: barWidth, fill, key }} />;
           })}
         </Group>
         <Axis
