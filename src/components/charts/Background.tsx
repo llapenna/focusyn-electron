@@ -1,19 +1,21 @@
-import { FC } from 'react';
-
 interface Props {
-  x?: number;
-  y?: number;
+  left?: number;
+  top?: number;
   width: number | string;
   height: number | string;
   color?: string;
   borderRadius?: number;
 }
 
-export const Background: FC<Props> = ({
-  x = 0,
-  y = 0,
+export const Background = ({
+  left = 0,
+  top = 0,
   width,
   height,
   color = '#FAFAFA',
   borderRadius = 16,
-}) => <rect {...{ x, y, width, height, fill: color, rx: borderRadius }}></rect>;
+}: Props) => (
+  <rect
+    {...{ x: left, y: top, width, height, fill: color, rx: borderRadius }}
+  ></rect>
+);
