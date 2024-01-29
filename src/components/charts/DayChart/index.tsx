@@ -13,7 +13,7 @@ import { timestampToMinutes } from './utils';
 import { Background } from '../Background';
 import { useSVGWidth } from './useSVGWidth';
 import { Tooltip, TooltipData } from '../Tooltip';
-import { bar } from './styles';
+import { Bar } from './Bar';
 
 export const DayChart = withTooltip<ChartProps, TooltipData>(
   ({
@@ -55,37 +55,24 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
             color="#D0D0D0"
           />
           <Group left={container.size.margin}>
-            {/* {filteredData.map((d) => {
+            {filteredData.map((d) => {
               const t = timestampToMinutes(d.timestamp);
-
               const x = xScale(t);
-              const y = 0;
-              const height = sizes.h - sizes.axisH;
-              const barWidth =
-                chart.step(width) * Math.floor(d.group.count / 60);
-              const fill = d.title.toColor();
 
               const key = `bar-${d.owner.name}-${d.timestamp}`;
-
               return (
-                <rect
-                  {...{ x, y, height, width: barWidth, fill, key }}
-                  onMouseMove={() => {
-                    showTooltip({
-                      tooltipData: {
-                        title: d.owner.name,
-                        description: new Date(d.timestamp).toTimeString(),
-                      },
-                      tooltipTop: y,
-                      tooltipLeft: x,
-                    });
-                  }}
-                  onMouseLeave={() => {
-                    hideTooltip();
+                <Bar
+                  {...{
+                    x,
+                    chartWidth: width,
+                    key,
+                    window: d,
+                    showTooltip,
+                    hideTooltip,
                   }}
                 />
               );
-            })} */}
+            })}
           </Group>
           <Axis
             left={container.size.margin}
