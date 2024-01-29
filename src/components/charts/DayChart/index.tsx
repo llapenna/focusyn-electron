@@ -79,6 +79,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
             top={container.size.margin + chart.size.h}
             scale={xScale}
             hideAxisLine={true}
+            hideTicks={true}
             tickValues={chart.tickValues}
             tickFormat={(v, i, a) => {
               const isLast = i === a.length - 1;
