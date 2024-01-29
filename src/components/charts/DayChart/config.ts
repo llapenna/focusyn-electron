@@ -5,7 +5,9 @@ export const chart = {
   maxBarQty: 60 * 24,
   size: {
     h: 100,
-    width: '100%',
+    w(width: number) {
+      return width - container.size.margin * 2;
+    },
   },
   get tickValues() {
     // Total number of ticks
@@ -16,14 +18,6 @@ export const chart = {
   },
   step(width: number) {
     return width / this.maxBarQty;
-  },
-  bounds: {
-    x(width: number) {
-      return width - container.size.margin * 2;
-    },
-    get y() {
-      return container.size.h - container.size.margin * 2;
-    },
   },
 };
 
