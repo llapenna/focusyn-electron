@@ -30,7 +30,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
 
     const xScale = scaleLinear<number>({
       domain: [0, chart.maxBarQty],
-      range: [0, chart.bounds.x(width)],
+      range: [0, chart.size.w(width)],
       clamp: true,
     });
 
@@ -51,7 +51,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
         >
           <Background
             width={container.size.w}
-            height={container.size.h - container.size.margin * 2}
+            height={chart.size.h}
             top={container.size.margin}
             color="#D0D0D0"
           />
