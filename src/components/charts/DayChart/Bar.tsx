@@ -46,6 +46,7 @@ export const Bar = ({
   };
   const onMouseLeave = () => hideTooltip();
 
+  // TODO: add motion/animations to the element
   return (
     <rect
       {...{ x, y, className, height, width, fill, onMouseEnter, onMouseLeave }}
