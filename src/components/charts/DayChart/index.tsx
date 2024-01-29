@@ -12,7 +12,6 @@ import { container, chart } from './config';
 import { timestampToMinutes } from './utils';
 import { Background } from '../Background';
 import { useSVGWidth } from './useSVGWidth';
-import { Border } from '../Border';
 import { Tooltip, TooltipData } from '../Tooltip';
 import { bar } from './styles';
 
@@ -55,14 +54,6 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
             top={container.size.margin}
             color="#D0D0D0"
           />
-          <rect
-            className={bar()}
-            x={100}
-            y={container.size.margin}
-            height={container.size.h - container.size.margin * 2}
-            width={100}
-          ></rect>
-          {/* <Border width={sizes.w} height={sizes.h} /> */}
           <Group left={container.size.margin}>
             {/* {filteredData.map((d) => {
               const t = timestampToMinutes(d.timestamp);
