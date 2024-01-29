@@ -102,17 +102,17 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
             scale={xScale}
             hideAxisLine={true}
             tickValues={chart.tickValues}
-            // tickFormat={(v, i, a) => {
-            //   const isLast = i === a.length - 1;
-            //   if (isLast) return '24hs';
+            tickFormat={(v, i, a) => {
+              const isLast = i === a.length - 1;
+              if (isLast) return '24hs';
 
-            //   const msInMin = 60 * 1000;
-            //   // Each v represents the quantity of minutes since 00:00
-            //   const d = new Date((v as number) * msInMin);
-            //   const date = new Date(d.getTime() + 3 * 60 * msInMin);
+              const msInMin = 60 * 1000;
+              // Each v represents the quantity of minutes since 00:00
+              const d = new Date((v as number) * msInMin);
+              const date = new Date(d.getTime() + 3 * 60 * msInMin);
 
-            //   return `${date.getHours()}hs`;
-            // }}
+              return `${date.getHours()}hs`;
+            }}
           />
           <Grid
             scale={xScale}
