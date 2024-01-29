@@ -106,45 +106,6 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
           top={tooltipTop}
           left={tooltipLeft}
         />
-        <table>
-          <thead>
-            <tr>
-              <td style={{ width: 200 }}>Titulo</td>
-              <td style={{ width: 200 }}>Cant. (c/u = 5s)</td>
-              <td style={{ width: 200 }}>Timestamp</td>
-              <td style={{ width: 200 }}>x</td>
-              <td style={{ width: 200 }}>width</td>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map(({ group, timestamp, owner }) => {
-              const date = new Date(timestamp);
-              const t = timestampToMinutes(timestamp);
-
-              const x = xScale(t);
-              const barWidth = chart.step(width) * Math.floor(group.count / 60);
-
-              const threshold = 60 / msToSec(INTERVAL_TIME);
-
-              return (
-                <tr
-                  key={`${owner.name}-${timestamp}`}
-                  style={{
-                    color: group.count < threshold ? 'lightgray' : 'black',
-                  }}
-                >
-                  <td>{owner.name}</td>
-                  <td>{group.count}</td>
-                  <td>
-                    {date.getHours()}:{date.getMinutes()}
-                  </td>
-                  <td>{x}</td>
-                  <td>{barWidth}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
       </div>
     );
   }
