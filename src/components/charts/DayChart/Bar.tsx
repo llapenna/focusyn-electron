@@ -5,6 +5,7 @@ import { TooltipData } from '../Tooltip';
 
 import { chart, container } from './config';
 import { bar } from './styles';
+import { countToFormattedTime } from './utils';
 
 interface Props {
   x: number;
@@ -30,11 +31,14 @@ export const Bar = ({
 
   const fill = window.title.toColor();
 
+  // FIXME: the tooltip won't update when the window.group.count changes
   const onMouseEnter = () => {
     showTooltip({
       tooltipData: {
         title: window.owner.name,
-        description: window.group.count.toString(),
+        description: `${countToFormattedTime(window.group.count)} (${
+          window.group.count
+        })`,
       },
       tooltipTop: y,
       tooltipLeft: x,
