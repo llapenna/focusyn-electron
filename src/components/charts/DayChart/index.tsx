@@ -29,7 +29,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
     const { ref, width } = useSVGWidth();
 
     const xScale = scaleLinear<number>({
-      domain: [0, chart.ticks],
+      domain: [0, chart.maxBarQty],
       range: [0, chart.bounds.x(width)],
       clamp: true,
     });
