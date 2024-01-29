@@ -116,7 +116,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
           />
           <Grid
             scale={xScale}
-            height={chart.bounds.y}
+            height={chart.size.h}
             left={container.size.margin}
             top={container.size.margin}
             tickValues={chart.tickValues}
