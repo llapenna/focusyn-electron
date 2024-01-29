@@ -98,7 +98,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
           </Group>
           <Axis
             left={container.size.margin}
-            top={container.size.h - container.size.margin}
+            top={container.size.margin + chart.size.h}
             scale={xScale}
             hideAxisLine={true}
             tickValues={chart.tickValues}
