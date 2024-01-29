@@ -3,7 +3,7 @@
  * @param t Timestamp in milliseconds.
  * @returns The total time in minutes.
  */
-export const timestampToMinutes = (t: number): number => {
+export const minutesSinceStart = (t: number): number => {
   const date = new Date(t);
   const hours = date.getHours();
   const minutes = date.getMinutes();

@@ -9,7 +9,7 @@ import { msToSec } from '@/shared/time';
 import { ChartProps } from '@/reactapp/types/chart';
 
 import { container, chart } from './config';
-import { timestampToMinutes } from './utils';
+import { minutesSinceStart } from './utils';
 import { Background } from '../Background';
 import { useSVGWidth } from './useSVGWidth';
 import { Tooltip, TooltipData } from '../Tooltip';
@@ -56,7 +56,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
           />
           <Group left={container.size.margin}>
             {filteredData.map((d) => {
-              const t = timestampToMinutes(d.timestamp);
+              const t = minutesSinceStart(d.timestamp);
               const x = xScale(t);
 
               const key = `bar-${d.owner.name}-${d.timestamp}`;
