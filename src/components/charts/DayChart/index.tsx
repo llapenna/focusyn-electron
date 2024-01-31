@@ -11,7 +11,7 @@ import { ChartProps } from '@/reactapp/types/chart';
 import { container, chart } from './config';
 import { minutesSinceStart } from './utils';
 import { Background } from '../Background';
-import { useSVGWidth } from './useSVGWidth';
+import { useWidth } from './useWidth';
 import { Tooltip, TooltipData } from '../Tooltip';
 import { Bar } from './Bar';
 
@@ -25,7 +25,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
     tooltipTop,
     tooltipLeft,
   }) => {
-    const { ref, width } = useSVGWidth();
+    const { ref, width } = useWidth();
 
     const xScale = scaleLinear<number>({
       domain: [0, chart.maxBarQty],
