@@ -28,11 +28,20 @@ export const axis = {
   },
 };
 
+export const brush = {
+  size: {
+    h: 20,
+  },
+  get yPos() {
+    return container.size.h - this.size.h;
+  },
+};
+
 export const container = {
   size: {
     margin: 25,
     get h(): number {
-      return chart.size.h + axis.size.h + this.margin * 2;
+      return chart.size.h + axis.size.h + this.margin * 2 + brush.size.h;
     },
     w: '100%',
   },
