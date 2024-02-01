@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@visx/axis": "^3.5.0",
+    "@visx/brush": "^3.6.1",
     "@visx/grid": "^3.5.0",
     "@visx/scale": "^3.5.0",
     "@visx/shape": "^3.5.0",
