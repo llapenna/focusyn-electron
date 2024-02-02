@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import '@/reactapp/utils/colors';
+import '@/reactapp/utils/clamp';
 
 import activeWindow from '@/reactapp/services/activeWindow';
 import { Main } from '@/reactapp/components/layout';

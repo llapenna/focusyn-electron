@@ -13,4 +13,11 @@ declare global {
      */
     toColor: () => string;
   }
+
+  /**
+   * Clamps a number between a minimum and maximum value.
+   */
+  interface Number {
+    clamp: (min: number, max: number) => number;
+  }
 }
