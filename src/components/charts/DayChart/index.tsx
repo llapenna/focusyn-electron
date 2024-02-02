@@ -39,7 +39,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
     });
 
     return (
-      <div>
+      <div onWheel={onWheel}>
         <div>
           <svg
             width={container.size.w}
