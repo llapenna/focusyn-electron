@@ -32,7 +32,7 @@ export const container = {
   size: {
     margin: 25,
     get h(): number {
-      return chart.size.h + axis.size.h + this.margin * 2 + brush.size.h;
+      return chart.size.h + axis.size.h + this.margin * 2;
     },
     w: '100%',
   },

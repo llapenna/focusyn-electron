@@ -59,6 +59,8 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
                 const x = xScale(t);
 
                 const key = `bar-${d.owner.name}-${d.timestamp}`;
+
+                // TODO: adjust the width of each bar depending on the zoom level
                 return (
                   <Bar
                     {...{
