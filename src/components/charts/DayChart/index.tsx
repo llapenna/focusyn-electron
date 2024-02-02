@@ -14,8 +14,8 @@ import { Background } from '../Background';
 import { useWidth } from './useWidth';
 import { Tooltip, TooltipData } from '../Tooltip';
 import { Bar } from './Bar';
-import { Brush } from './Brush';
 import { useScale } from './useScale';
+import { usePanning } from './usePanning';
 
 export const DayChart = withTooltip<ChartProps, TooltipData>(
   ({
@@ -28,13 +28,8 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
     tooltipLeft,
   }) => {
     const { ref, width } = useWidth();
-    const [filterBounds, setFilterBounds] = useState<[number, number]>([
-      0,
-      chart.maxBarQty,
-    ]);
-
-    const xScale = useScale({ width, x: filterBounds });
-    const xBrushScale = useScale({ width, x: [0, chart.maxBarQty] });
+    const { onWheel, pannedBounds } = usePanning();
+    const xScale = useScale({ width, x: pannedBounds });
 
     // Remove data that doesn't get to a minute and the data out of bounds
     const filteredData = data.filter((d) => {
@@ -103,12 +98,6 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
               left={container.size.margin}
               top={container.size.margin}
               tickValues={chart.tickValues}
-            />
-            <Brush
-              scale={xBrushScale}
-              width={width}
-              data={filteredData}
-              setFilterBounds={setFilterBounds}
             />
           </svg>
         </div>
