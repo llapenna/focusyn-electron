@@ -10,6 +10,7 @@ import { countToFormattedTime } from './utils';
 interface Props {
   x: number;
   y?: number;
+  zoom: number;
   chartWidth: number;
   window: ActiveWindow.Grouped;
   showTooltip: UseTooltipParams<TooltipData>['showTooltip'];
@@ -19,6 +20,7 @@ interface Props {
 export const Bar = ({
   x,
   y = container.size.margin,
+  zoom,
   chartWidth,
   window,
   showTooltip,
@@ -27,7 +29,8 @@ export const Bar = ({
   const className = bar();
 
   const height = chart.size.h;
-  const width = chart.step(chartWidth) * Math.floor(window.group.count / 60);
+  const width =
+    chart.step(chartWidth) * Math.floor(window.group.count / 60) * zoom;
 
   const fill = window.title.toColor();
 

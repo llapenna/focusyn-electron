@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Group } from '@visx/group';
 import { AxisBottom as Axis } from '@visx/axis';
 import { GridColumns as Grid } from '@visx/grid';
@@ -29,7 +28,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
     tooltipLeft,
   }) => {
     const { ref, width } = useWidth();
-    const { onWheel, pannedBounds } = usePanning();
+    const { handlers, pannedBounds, zoom } = usePanning();
     const xScale = useScale({ width, x: pannedBounds });
 
     // Remove data that doesn't get to a minute and the data out of bounds
@@ -40,8 +39,8 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
     });
 
     return (
-      <div onWheel={onWheel}>
-        <div>
+      <div>
+        <div {...handlers} draggable className={containerClass()}>
           <svg
             width={containerConfig.size.w}
             height={containerConfig.size.h}
@@ -65,6 +64,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
                 return (
                   <Bar
                     {...{
+                      zoom,
                       x,
                       chartWidth: width,
                       key,
