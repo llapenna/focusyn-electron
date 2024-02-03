@@ -19,6 +19,8 @@ export const chart = {
   step(width: number) {
     return width / this.maxBarQty;
   },
+  // TODO: find a nice bg color for the chart
+  bg: '#D0D0D0',
 };
 
 export const axis = {

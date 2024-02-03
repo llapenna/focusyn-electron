@@ -52,7 +52,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
               width={containerConfig.size.w}
               height={chart.size.h}
               top={containerConfig.size.margin}
-              color="#D0D0D0"
+              color={chart.bg}
             />
             <Group left={containerConfig.size.margin}>
               {filteredData.map((d) => {
