@@ -44,7 +44,6 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
           <svg
             width={containerConfig.size.w}
             height={containerConfig.size.h}
-            style={{ border: '1px solid black' }}
             ref={ref}
           >
             <Background
