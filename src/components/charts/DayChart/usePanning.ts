@@ -67,7 +67,6 @@ export const usePanning = () => {
     const value = clientX - dragPos;
     setDragPos(clientX);
     if (value === 0 || Math.abs(value) > 10) return;
-    console.log(value);
 
     updateWithinBounds(setPan, bounds.panBounds, -value);
   };
