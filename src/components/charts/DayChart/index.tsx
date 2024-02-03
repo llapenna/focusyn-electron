@@ -8,7 +8,8 @@ import { INTERVAL_TIME } from '@/shared/config';
 import { msToSec } from '@/shared/time';
 import { ChartProps } from '@/reactapp/types/chart';
 
-import { container, chart } from './config';
+import { container as containerConfig, chart } from './config';
+import { container as containerClass } from './styles';
 import { minutesSinceStart } from './utils';
 import { Background } from '../Background';
 import { useWidth } from './useWidth';
@@ -42,18 +43,18 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
       <div onWheel={onWheel}>
         <div>
           <svg
-            width={container.size.w}
-            height={container.size.h}
+            width={containerConfig.size.w}
+            height={containerConfig.size.h}
             style={{ border: '1px solid black' }}
             ref={ref}
           >
             <Background
-              width={container.size.w}
+              width={containerConfig.size.w}
               height={chart.size.h}
-              top={container.size.margin}
+              top={containerConfig.size.margin}
               color="#D0D0D0"
             />
-            <Group left={container.size.margin}>
+            <Group left={containerConfig.size.margin}>
               {filteredData.map((d) => {
                 const t = minutesSinceStart(d.timestamp);
                 const x = xScale(t);
@@ -76,8 +77,8 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
               })}
             </Group>
             <Axis
-              left={container.size.margin}
-              top={container.size.margin + chart.size.h}
+              left={containerConfig.size.margin}
+              top={containerConfig.size.margin + chart.size.h}
               scale={xScale}
               hideAxisLine={true}
               hideTicks={true}
@@ -97,8 +98,8 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
             <Grid
               scale={xScale}
               height={chart.size.h}
-              left={container.size.margin}
-              top={container.size.margin}
+              left={containerConfig.size.margin}
+              top={containerConfig.size.margin}
               tickValues={chart.tickValues}
             />
           </svg>
