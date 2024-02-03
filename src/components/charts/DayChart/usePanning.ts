@@ -28,7 +28,7 @@ export const usePanning = () => {
   const [dragPos, setDragPos] = useState(0);
 
   const bounds = {
-    zoomBounds: { max: 4, min: 1 },
+    zoomBounds: { max: 8, min: 1 },
     panBounds: { min: 0, max: chart.maxBarQty * (1 - 1 / zoom) },
   };
 
@@ -68,7 +68,7 @@ export const usePanning = () => {
     setDragPos(clientX);
     if (value === 0 || Math.abs(value) > 10) return;
 
-    updateWithinBounds(setPan, bounds.panBounds, -value);
+    updateWithinBounds(setPan, bounds.panBounds, -value / zoom);
   };
 
   const pannedBounds = [0, chart.maxBarQty].map((v) => v / zoom + pan) as [
