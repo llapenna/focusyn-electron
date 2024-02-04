@@ -1,3 +1,5 @@
+import { ActiveWindow } from '@/shared/types/activeWindow';
+
 /**
  * Prop to render any kind of chart
  */
