@@ -1,4 +1,8 @@
-import { defineTokens, defineSemanticTokens } from '@pandacss/dev';
+import {
+  defineTokens,
+  defineSemanticTokens,
+  defineGlobalStyles,
+} from '@pandacss/dev';
 import type { ExtendableOptions } from '@pandacss/types';
 
 // --------------------
@@ -80,11 +84,19 @@ const colors = defineTokens.colors({
     300: { value: '#d1d5db' },
     400: { value: '#9ca3af' },
     500: { value: '#6b7280' },
+    900: { value: '#111827' },
+    950: { value: '#030712' },
+  },
+  slate: {
+    300: { value: '#cbd5e1' },
+    500: { value: '#64748b' },
+    600: { value: '#475569' },
+    700: { value: '#334155' },
   },
   white: { value: '#ffffff' },
 });
 const semanticColors = defineSemanticTokens.colors({
-  background: { value: '{colors.gray.50}' },
+  background: { value: '{colors.gray.950}' },
   overlay: { value: '{colors.white}' },
   overlayBorder: { value: '{colors.gray.200}' },
   subtleBorder: { value: '{colors.gray.200}' },
@@ -103,7 +115,7 @@ const semanticShadows = defineTokens.shadows({
   main: { value: '{shadows.md}' },
 });
 
-const theme: ExtendableOptions['theme'] = {
+export const theme: ExtendableOptions['theme'] = {
   tokens: {
     spacing,
     sizes,
@@ -118,4 +130,13 @@ const theme: ExtendableOptions['theme'] = {
     shadows: semanticShadows,
   },
 };
-export default theme;
+
+// --------------------
+// GLOBAL STYLES
+// --------------------
+
+export const global = defineGlobalStyles({
+  body: {
+    bg: 'background',
+  },
+});
