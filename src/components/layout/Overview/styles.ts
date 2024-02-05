@@ -1,4 +1,13 @@
+import { cva } from '@/reactapp/styled/css';
 import { sva } from '@/reactapp/styled/css';
+
+export const overview = cva({
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'xl',
+  },
+});
 
 export const total = sva({
   slots: ['width', 'title', 'value'],
