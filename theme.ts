@@ -84,6 +84,7 @@ const colors = defineTokens.colors({
     300: { value: '#d1d5db' },
     400: { value: '#9ca3af' },
     500: { value: '#6b7280' },
+    800: { value: '#1f2937' },
     900: { value: '#111827' },
     950: { value: '#030712' },
   },
@@ -97,9 +98,8 @@ const colors = defineTokens.colors({
 });
 const semanticColors = defineSemanticTokens.colors({
   background: { value: '{colors.gray.950}' },
-  overlay: { value: '{colors.white}' },
-  overlayBorder: { value: '{colors.gray.200}' },
-  subtleBorder: { value: '{colors.gray.200}' },
+  mainBackground: { value: '{colors.gray.900}' },
+  container: { value: '{colors.gray.800}' },
 });
 
 // --------------------
@@ -142,6 +142,10 @@ export const global = defineGlobalStyles({
     button: {
       '-webkit-app-region': 'no-drag',
     },
+
+    // Default colors
     bg: 'background',
+    color: 'slate.300',
+    fontFamily: '"Varela Round", sans-serif',
   },
 });
