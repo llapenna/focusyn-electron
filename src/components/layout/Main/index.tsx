@@ -3,7 +3,7 @@ import { main } from './styles';
 interface Props {
   children: React.ReactNode;
 }
-const Main: React.FC<Props> = ({ children }) => {
+const Main = ({ children }: Props) => {
   const classes = main();
   return (
     <>
