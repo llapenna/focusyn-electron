@@ -72,6 +72,7 @@ const radii = defineTokens.radii({
   sm: { value: '4px' },
   md: { value: '8px' },
   lg: { value: '16px' },
+  xl: { value: '32px' },
 });
 
 // --------------------
@@ -84,6 +85,7 @@ const colors = defineTokens.colors({
     300: { value: '#d1d5db' },
     400: { value: '#9ca3af' },
     500: { value: '#6b7280' },
+    700: { value: '#374151' },
     800: { value: '#1f2937' },
     900: { value: '#111827' },
     950: { value: '#030712' },
@@ -93,6 +95,9 @@ const colors = defineTokens.colors({
     500: { value: '#64748b' },
     600: { value: '#475569' },
     700: { value: '#334155' },
+  },
+  indigo: {
+    300: { value: '#a5b4fc' },
   },
   white: { value: '#ffffff' },
 });
@@ -137,10 +142,14 @@ export const theme: ExtendableOptions['theme'] = {
 
 export const global = defineGlobalStyles({
   body: {
-    '-webkit-app-region': 'drag',
-
-    button: {
-      '-webkit-app-region': 'no-drag',
+    'h1, h2, h3, h4, h5, h6, p, span, butotn': {
+      '-webkit-user-select': 'none',
+    },
+    '.title-bar': {
+      '-webkit-app-region': 'drag',
+      width: '100%',
+      height: '30px',
+      position: 'absolute',
     },
 
     // Default colors
