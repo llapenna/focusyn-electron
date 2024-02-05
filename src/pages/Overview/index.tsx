@@ -1,10 +1,10 @@
 import { Alarm, Moon, Target } from '@phosphor-icons/react';
 
-import { hstack, vstack } from '@/reactapp/styled/patterns';
+import { hstack } from '@/reactapp/styled/patterns';
 
 import { overview } from './styles';
 import { Total } from './Total';
-import { Container } from '@/reactapp/components/layout';
+import { Chart } from './Chart';
 
 const Overview = () => {
   return (
@@ -15,9 +15,7 @@ const Overview = () => {
         <Total title="Focus" value="2h 30" icon={<Target size={24} />}></Total>
         <Total title="Idle" value="30m" icon={<Moon size={24} />}></Total>
       </div>
-      <Container>
-        <div className={vstack({ gap: 'xl' })}></div>
-      </Container>
+      <Chart></Chart>
     </div>
   );
 };
