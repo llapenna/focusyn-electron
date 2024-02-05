@@ -15,6 +15,7 @@
     "release:ci": "dotenv release-it --ci"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.0.15",
     "@visx/axis": "^3.5.0",
     "@visx/brush": "^3.6.1",
     "@visx/grid": "^3.5.0",
