@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { total } from './styles';
 import { vstack } from '@/reactapp/styled/patterns';
-import Container from '../Container';
+import { Container } from '@/reactapp/components/layout';
 
 interface Props {
   icon: ReactNode;
