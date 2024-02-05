@@ -28,3 +28,35 @@ export const total = sva({
     },
   },
 });
+
+export const filter = cva({
+  base: {
+    py: 'xs',
+    px: 'md',
+
+    borderRadius: 'xl',
+    minWidth: 'lg',
+
+    cursor: 'pointer',
+
+    transition: 'background-color 0.25s ease-in-out',
+    '&:hover': {
+      bg: 'gray.700',
+    },
+  },
+  variants: {
+    active: {
+      true: {
+        color: 'indigo.300',
+        bg: 'gray.900',
+      },
+      false: {
+        bg: 'transparent',
+        color: 'inherit',
+      },
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
