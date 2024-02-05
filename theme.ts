@@ -137,6 +137,11 @@ export const theme: ExtendableOptions['theme'] = {
 
 export const global = defineGlobalStyles({
   body: {
+    '-webkit-app-region': 'drag',
+
+    button: {
+      '-webkit-app-region': 'no-drag',
+    },
     bg: 'background',
   },
 });

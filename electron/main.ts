@@ -18,6 +18,8 @@ function createWindow() {
       contextIsolation: true,
       preload,
     },
+    titleBarStyle: 'hidden',
+    transparent: true,
   });
 
   if (URL) window.loadURL(URL);
