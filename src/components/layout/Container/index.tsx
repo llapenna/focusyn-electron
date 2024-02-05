@@ -5,18 +5,9 @@ type Props = ContainerVariants & {
   as?: 'div' | 'main' | 'section' | 'article' | 'aside' | 'header' | 'footer';
 };
 
-const Container: React.FC<Props> = ({
-  children,
-  as = 'div',
-  type = 'main',
-  orientation = 'vertical',
-}) => {
+const Container = ({ children, as = 'div' }: Props) => {
   const Component = as;
-  return (
-    <Component className={container({ type, orientation })}>
-      {children}
-    </Component>
-  );
+  return <Component className={container()}>{children}</Component>;
 };
 
 export default Container;
