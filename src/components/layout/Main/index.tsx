@@ -1,5 +1,3 @@
-import Container from '../Container';
-
 import { main } from './styles';
 
 interface Props {
@@ -8,12 +6,13 @@ interface Props {
 const Main: React.FC<Props> = ({ children }) => {
   const classes = main();
   return (
-    <main className={classes.wrapper}>
-      <Container>
-        <h1 className={classes.title}>Focusyn</h1>
-      </Container>
-      <Container>{children}</Container>
-    </main>
+    <>
+      <div className="title-bar"></div>
+      <div className={classes.padding}>
+        <h1 className={classes.title}>focusyn</h1>
+        <main className={classes.wrapper}>{children}</main>
+      </div>
+    </>
   );
 };
 

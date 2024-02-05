@@ -1,25 +1,27 @@
 import { sva } from '@/reactapp/styled/css';
 
 export const main = sva({
-  slots: ['wrapper', 'title'],
+  slots: ['padding', 'title', 'wrapper'],
   base: {
-    wrapper: {
+    padding: {
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'stretch',
-      gap: 'sm',
+      flexDirection: 'row',
+      gap: 'md',
 
-      p: 'lg',
-
-      backgroundColor: 'background',
+      p: 'xl',
 
       minHeight: 'fullHeight',
     },
+    wrapper: {
+      background: 'mainBackground',
+      borderRadius: 'xl',
+
+      p: 'xxl',
+      width: 'w100',
+    },
     title: {
-      fontSize: 'md',
-      fontWeight: 'bold',
-      textAlign: 'center',
-      lineHeight: 0.75,
+      fontSize: 'lg',
+      letterSpacing: '0.25em',
     },
   },
 });
