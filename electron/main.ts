@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { app, BrowserWindow } from 'electron';
 
-import { PUBLIC, DIST_ELECTRON, URL, DIST } from './config';
+import { PUBLIC, DIST_ELECTRON, URL, DIST, titleBar } from './config';
 import { addWindowHandlers, addIPCHandlers } from './handlers';
 import activeWindow from './services/activeWindow';
 
@@ -19,7 +19,7 @@ function createWindow() {
       preload,
     },
     titleBarStyle: 'hidden',
-    transparent: true,
+    ...titleBar,
   });
 
   if (URL) window.loadURL(URL);

@@ -30,3 +30,17 @@ export const IS_WIN = process.platform === 'win32';
  * Is the OS Linux?
  */
 export const IS_LINUX = process.platform === 'linux';
+
+/**
+ * The title bar configuration.
+ */
+export const titleBar = IS_MAC
+  ? { transparent: true }
+  : {
+      transparent: false,
+      titleBarOverlay: {
+        color: '#030712',
+        symbolColor: '#cbd5e1',
+        height: 30,
+      },
+    };
