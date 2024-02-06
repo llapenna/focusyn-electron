@@ -17,7 +17,6 @@
   "dependencies": {
     "@phosphor-icons/react": "^2.0.15",
     "@visx/axis": "^3.5.0",
-    "@visx/brush": "^3.6.1",
     "@visx/grid": "^3.5.0",
     "@visx/scale": "^3.5.0",
     "@visx/shape": "^3.5.0",
@@ -54,6 +53,7 @@
     "release-it": "^16.2.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vite-plugin-electron": "^0.14.1"
+    "vite-plugin-electron": "^0.14.1",
+    "vite-plugin-webfont-dl": "^3.9.1"
   }
 }
