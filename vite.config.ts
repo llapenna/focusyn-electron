@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import electron from 'vite-plugin-electron';
+import webfontDownload from 'vite-plugin-webfont-dl';
+
 import fs from 'node:fs';
 import { join } from 'node:path';
 
@@ -28,6 +30,9 @@ export default defineConfig(({ command }) => {
       ],
     },
     plugins: [
+      webfontDownload([
+        'https://fonts.googleapis.com/css2?family=Varela+Round&display=swap',
+      ]),
       react(),
       electron([
         {
