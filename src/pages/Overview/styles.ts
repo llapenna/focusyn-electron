@@ -34,6 +34,8 @@ export const filter = cva({
     py: 'xs',
     px: 'md',
 
+    fontSize: 14,
+
     borderRadius: 'xl',
     minWidth: 'lg',
 
