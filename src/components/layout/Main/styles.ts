@@ -20,7 +20,7 @@ export const main = sva({
       width: 'w100',
     },
     title: {
-      fontSize: 'lg',
+      fontSize: 'md',
       letterSpacing: '0.25em',
     },
   },
