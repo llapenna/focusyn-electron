@@ -15,7 +15,7 @@ const Overview = () => {
         <Total title="Focus" value="2h 30" icon={<Target size={24} />}></Total>
         <Total title="Idle" value="30m" icon={<Moon size={24} />}></Total>
       </div>
-      <Chart></Chart>
+      <Chart />
     </div>
   );
 };

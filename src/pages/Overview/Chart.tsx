@@ -14,7 +14,7 @@ const Button = ({ children, active = false }: ButtonProps) => (
 export const Chart = () => {
   return (
     <Container>
-      <div className={vstack({ gap: 'xl', alignItems: 'start' })}>
+      <div className={vstack({ gap: 'xl', alignItems: 'stretch' })}>
         <div className={hstack({ gap: 'sm' })}>
           <Button active>All</Button>
           <Button>Active</Button>
