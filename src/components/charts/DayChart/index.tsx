@@ -6,6 +6,7 @@ import { withTooltip } from '@visx/tooltip';
 import { INTERVAL_TIME } from '@/shared/config';
 import { msToSec } from '@/shared/time';
 import { ChartProps } from '@/reactapp/types/chart';
+import { token } from '@/reactapp/styled/tokens';
 
 import { container as containerConfig, chart } from './config';
 import { container as containerClass } from './styles';
@@ -81,6 +82,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
               scale={xScale}
               hideAxisLine={true}
               hideTicks={true}
+              tickLabelProps={{ fill: token('colors.slate.300') }}
               tickValues={chart.tickValues}
               tickFormat={(v, i, a) => {
                 const isLast = i === a.length - 1;
@@ -100,6 +102,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
               left={containerConfig.size.margin}
               top={containerConfig.size.margin}
               tickValues={chart.tickValues}
+              stroke={token('colors.slate.600')}
             />
           </svg>
         </div>

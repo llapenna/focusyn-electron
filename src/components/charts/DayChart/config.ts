@@ -1,8 +1,11 @@
 import range from 'lodash-es/range';
 
+import { token } from '@/reactapp/styled/tokens';
+
 export const chart = {
   // 60 minutes/h * 24h/day = 1440 minutes/day
   maxBarQty: 60 * 24,
+  bg: token('colors.slate.700'),
   size: {
     h: 100,
     w(width: number) {
