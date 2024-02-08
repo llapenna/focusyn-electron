@@ -38,6 +38,7 @@
       "@/reactapp/types/*": ["src/types/*"],
       "@/reactapp/styled/*": ["src/styled/*"],
       "@/reactapp/pages/*": ["src/pages/*"],
+      "@/reactapp/context/*": ["src/context/*"],
       "@/shared/*": ["shared/*"]
     }
   },
