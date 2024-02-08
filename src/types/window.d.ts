@@ -1,4 +1,4 @@
-import type { ActiveWindow } from '@/shared/activeWindow';
+import type { ActiveWindow } from '@/shared/types/activeWindow';
 
 declare global {
   interface Window {
