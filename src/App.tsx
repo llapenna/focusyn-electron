@@ -8,7 +8,7 @@ import { Main } from '@/reactapp/components/layout';
 
 import { ActiveWindow } from '@/shared/types/activeWindow';
 import Overview from './pages/Overview';
-import { ActiveWindowProvider } from '@/reactapp/context/ActiveWindow';
+import { ActiveWindowsProvider } from '@/reactapp/context/ActiveWindows';
 
 function App() {
   const [count, setCount] = useState<ActiveWindow.Result[]>([]);
@@ -29,11 +29,11 @@ function App() {
   });
 
   return (
-    <ActiveWindowProvider value={grouped}>
+    <ActiveWindowsProvider value={grouped}>
       <Main>
         <Overview />
       </Main>
-    </ActiveWindowProvider>
+    </ActiveWindowsProvider>
   );
 }
 
