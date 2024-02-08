@@ -7,7 +7,8 @@ import activeWindow from '@/reactapp/services/activeWindow';
 import { Main } from '@/reactapp/components/layout';
 
 import { ActiveWindow } from '@/shared/types/activeWindow';
-import { DayChart } from './components/charts/DayChart';
+import Overview from './pages/Overview';
+import { ActiveWindowProvider } from '@/reactapp/context/ActiveWindow';
 
 function App() {
   const [count, setCount] = useState<ActiveWindow.Result[]>([]);
@@ -28,11 +29,11 @@ function App() {
   });
 
   return (
-    <Main>
-      {/* <ChartContainer windows={count}></ChartContainer> */}
-      {/* <button onClick={addData}>add</button> */}
-      <DayChart data={grouped}></DayChart>
-    </Main>
+    <ActiveWindowProvider value={grouped}>
+      <Main>
+        <Overview />
+      </Main>
+    </ActiveWindowProvider>
   );
 }
 
