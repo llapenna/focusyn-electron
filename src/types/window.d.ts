@@ -1,10 +1,18 @@
 import type { ActiveWindow } from '@/shared/types/activeWindow';
 
+export interface ElectronAPI {
+  activeWindow: {
+    subscribe: ActiveWindow.Subscribe;
+  };
+  versions: {
+    node: () => string;
+    chrome: () => string;
+    electron: () => string;
+  };
+}
 declare global {
   interface Window {
-    activeWindow: {
-      subscribe: ActiveWindow.Subscribe;
-    };
+    electronAPI: ElectronAPI;
   }
 
   interface String {

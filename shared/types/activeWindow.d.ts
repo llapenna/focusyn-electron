@@ -6,7 +6,7 @@ export namespace ActiveWindow {
   interface BaseResult extends activeWinLib.BaseResult {
     timestamp: number;
   }
-  export interface WindowResult extends activeWinLib.Result, BaseResult {}
+  interface WindowResult extends activeWinLib.Result, BaseResult {}
   export interface IdleResult extends BaseResult {
     title: 'Idle';
     owner: {
