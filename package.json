@@ -7,9 +7,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "preview": "vite preview",
     "package": "npm run build && electron-builder",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
+    "knip": "knip",
+    "codecheck": "npm run lint && npm run knip",
     "prepare": "husky install && panda codegen",
     "release": "dotenv release-it",
     "release:ci": "dotenv release-it --ci"
@@ -50,6 +52,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "husky": "^8.0.3",
+    "knip": "^4.5.0",
     "release-it": "^16.2.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
