@@ -1,26 +1,12 @@
-import { secToMs } from '@/shared/time';
 import { TimeUnits } from '@/reactapp/types/time';
 
 /**
- * Helper function to convert a number to a `Date` object.
- * @param time Time in milliseconds or seconds.
- * @param format Whether the time is in milliseconds or seconds. Defaults to milliseconds.
- * @returns A `Date` object.
- */
-const numberToDate = (time: number, format: 'ms' | 's'): Date => {
-  return new Date(format === 'ms' ? time : secToMs(time));
-};
-
-/**
- * Returns the hours, minutes and seconds of a Date object as numbers.
- * @param date Date object
+ * Returns the hours, minutes and seconds of a `Date` object as numbers.
+ * @param time Time in milliseconds used to create a `Date` object.
  * @returns An object containing the hours, minutes and seconds of the Date object as numbers.
  */
-export const getTimeUnits = (
-  time: Date | number,
-  format: 'ms' | 's' = 'ms'
-): TimeUnits => {
-  const date = typeof time === 'number' ? numberToDate(time, format) : time;
+const getTimeUnits = (time: number): TimeUnits => {
+  const date = new Date(time);
 
   // Where to trim the ISO Date string. Example: 1970-01-01T/00:00:50/.000Z
   // The / denotes the start and end of the string.
@@ -35,16 +21,12 @@ export const getTimeUnits = (
 };
 
 /**
- * Generates a string in the format of "hh:mm:ss" from a Date object or milliseconds.
- * @param time Date object or milliseconds to generate a Date object from.
- * @param format Whether the time is in milliseconds or seconds. Defaults to milliseconds.
+ * Generates a string in the format of "hh:mm:ss" using milliseconds.
+ * @param time Time measured in milliseconds.
  * @returns A string in the format of "hh:mm:ss".
  */
-export const getFormattedTime = (
-  time: Date | number,
-  format: 'ms' | 's' = 'ms'
-): string => {
-  const { h, m, s } = getTimeUnits(time, format);
+export const getFormattedTime = (time: number): string => {
+  const { h, m, s } = getTimeUnits(time);
 
   let result = `${s}s`;
 

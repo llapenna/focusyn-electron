@@ -4,7 +4,7 @@ import { ActiveWindow } from '@/shared/types/activeWindow';
 /**
  * Calculates the total time of all active windows.
  * @param arr Array containing the list of active windows
- * @param include If 'active', only active windows will be included. If 'idle', only idle windows will be included. If 'both', both active and idle windows will be included.
+ * @param include If `'active'`, only active windows will be included. If `'idle'`, only idle windows will be included. If `'both'`, both active and idle windows will be included.
  * @returns Total time number in milliseconds
  */
 export const getTotalTime = (
