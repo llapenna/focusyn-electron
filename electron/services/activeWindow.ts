@@ -3,6 +3,7 @@ import { powerMonitor } from 'electron';
 
 import { IDLE_TIME, INTERVAL_TIME } from '@/shared/config';
 import { ActiveWindow } from '@/shared/types/activeWindow';
+import { msToSec } from '@/shared/time';
 
 import { window } from '../main';
 
@@ -60,7 +61,8 @@ const generateIdleState = (): ActiveWindow.IdleResult => ({
  */
 const send = async (): Promise<void> => {
   if (window) {
-    const isIdle = powerMonitor.getSystemIdleState(IDLE_TIME) === 'idle';
+    const isIdle =
+      powerMonitor.getSystemIdleState(msToSec(IDLE_TIME)) === 'idle';
 
     if (isIdle)
       window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', generateIdleState());
