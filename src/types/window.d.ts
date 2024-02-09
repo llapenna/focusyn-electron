@@ -3,6 +3,7 @@ import type { ActiveWindow } from '@/shared/types/activeWindow';
 export interface ElectronAPI {
   activeWindow: {
     subscribe: ActiveWindow.Subscribe;
+    unsubscribe: ActiveWindow.Unsubscribe;
   };
   versions: {
     node: () => string;

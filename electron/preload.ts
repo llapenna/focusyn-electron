@@ -17,6 +17,7 @@ const activeWindow = {
   current: () => ipcRenderer.invoke('ACTIVE_WINDOW_CURRENT'),
   subscribe: (callback: IPC.SubscribeCallback) =>
     ipcRenderer.on('ACTIVE_WINDOW_SUBSCRIBE', callback),
+  unsubscribe: () => ipcRenderer.removeAllListeners('ACTIVE_WINDOW_SUBSCRIBE'),
 };
 
 contextBridge.exposeInMainWorld('electronAPI', {

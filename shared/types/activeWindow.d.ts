@@ -24,4 +24,5 @@ export namespace ActiveWindow {
 
   export type Callback = IPC.SubscribeCallback<Result | undefined>;
   export type Subscribe = (callback: Callback) => void;
+  export type Unsubscribe = () => void;
 }
