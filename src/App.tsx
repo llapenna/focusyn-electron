@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import '@/reactapp/utils/colors';
 import '@/reactapp/utils/clamp';
 
-import activeWindow from '@/reactapp/services/activeWindow';
+import { subscribe, unsubscribe } from '@/reactapp/services/activeWindow';
 import { Main } from '@/reactapp/components/layout';
 
 import { ActiveWindow } from '@/shared/types/activeWindow';
@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <ActiveWindowsProvider value={grouped}>
+    <ActiveWindowsProvider value={count}>
       <Main>
         <Overview />
       </Main>

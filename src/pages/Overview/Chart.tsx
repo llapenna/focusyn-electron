@@ -1,5 +1,7 @@
 import { hstack, vstack } from '@/reactapp/styled/patterns';
 import { Container } from '@/reactapp/components/layout';
+import { DayChart } from '@/reactapp/components/charts/DayChart';
+import { useGroupedActiveWindows } from '@/reactapp/context/ActiveWindows';
 
 import { filter } from './styles';
 
@@ -12,6 +14,7 @@ const Button = ({ children, active = false }: ButtonProps) => (
 );
 
 export const Chart = () => {
+  const windows = useGroupedActiveWindows({});
   return (
     <Container>
       <div className={vstack({ gap: 'xl', alignItems: 'stretch' })}>
@@ -21,6 +24,7 @@ export const Chart = () => {
           <Button>Idle</Button>
           <Button>Focus</Button>
         </div>
+        <DayChart data={windows} />
       </div>
     </Container>
   );
