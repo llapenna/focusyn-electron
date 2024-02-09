@@ -18,7 +18,6 @@ function createWindow() {
       contextIsolation: true,
       preload,
     },
-    titleBarStyle: 'hidden',
     ...titleBar,
   });
 

@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import isdev from 'electron-is-dev';
+import { BrowserWindowConstructorOptions } from 'electron';
 
 // All these directories are relative to '<projectRoot>/dist-electron' folder
 
@@ -34,13 +35,16 @@ export const IS_LINUX = process.platform === 'linux';
 /**
  * The title bar configuration.
  */
-export const titleBar = IS_MAC
-  ? { transparent: true }
-  : {
-      transparent: false,
-      titleBarOverlay: {
-        color: '#030712',
-        symbolColor: '#cbd5e1',
-        height: 30,
-      },
-    };
+export const titleBar: BrowserWindowConstructorOptions = {
+  titleBarStyle: 'hidden',
+  ...(IS_MAC
+    ? { transparent: true }
+    : {
+        transparent: false,
+        titleBarOverlay: {
+          color: '#030712',
+          symbolColor: '#cbd5e1',
+          height: 30,
+        },
+      }),
+};
