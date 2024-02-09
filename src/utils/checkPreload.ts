@@ -1,21 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ElectronAPI } from '@/reactapp/types/window';
 
-type ApiHandler<T extends object> = (api: T) => any;
 type APIList = keyof ElectronAPI;
 
 /**
- * Checks if the given API has been loaded into the `window.electronAPI` object
- * @param api Electron process API to check.
- * @param fn Function to execute if the API exists. Receives the API as an argument.
- * @returns If the API exists, the result of the function passed to `fn`. Otherwise, throws an error.
+ * Checks if the given API has been loaded into the `window.electronAPI` object and returns it so it can be used directly.
+ * @param api Name of the Electron API to check.
+ * @returns The Electron API if it exists. Otherwise, throws an error.
  */
-const checkPreload = <T extends ElectronAPI[APIList]>(
-  api: APIList,
-  fn: ApiHandler<T>
-) => {
+const checkPreload = <T extends ElectronAPI[APIList]>(api: APIList) => {
   if (window && api in window['electronAPI'])
-    return fn(window['electronAPI'][api] as T);
+    return window['electronAPI'][api] as T;
   else throw new Error(`Electron API "${api}" not found.`);
 };
 
