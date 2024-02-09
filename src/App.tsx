@@ -14,19 +14,16 @@ function App() {
   const [count, setCount] = useState<ActiveWindow.Result[]>([]);
 
   useEffect(() => {
-    activeWindow.subscribe((_, window) => {
+    subscribe((_, window) => {
       if (window)
         setCount((state) => {
           return [...state, window];
         });
       void window;
     });
-  }, []);
 
-  const grouped = activeWindow.groupBy(count, {
-    by: 'owner.name',
-    consecutive: true,
-  });
+    return unsubscribe;
+  }, []);
 
   return (
     <ActiveWindowsProvider value={grouped}>
