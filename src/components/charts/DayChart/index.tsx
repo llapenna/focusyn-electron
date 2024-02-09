@@ -50,17 +50,16 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
             <Background
               width={containerConfig.size.w}
               height={chart.size.h}
-              top={containerConfig.size.margin}
               color={chart.bg}
+              borderRadius={12}
             />
-            <Group left={containerConfig.size.margin}>
+            <Group left={containerConfig.size.marginX}>
               {filteredData.map((d) => {
                 const t = minutesSinceStart(d.timestamp);
                 const x = xScale(t);
 
                 const key = `bar-${d.owner.name}-${d.timestamp}`;
 
-                // TODO: adjust the width of each bar depending on the zoom level
                 return (
                   <Bar
                     {...{
@@ -77,8 +76,8 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
               })}
             </Group>
             <Axis
-              left={containerConfig.size.margin}
-              top={containerConfig.size.margin + chart.size.h}
+              left={containerConfig.size.marginX}
+              top={chart.size.h}
               scale={xScale}
               hideAxisLine={true}
               hideTicks={true}
@@ -99,8 +98,7 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
             <Grid
               scale={xScale}
               height={chart.size.h}
-              left={containerConfig.size.margin}
-              top={containerConfig.size.margin}
+              left={containerConfig.size.marginX}
               tickValues={chart.tickValues}
               stroke={token('colors.slate.600')}
             />

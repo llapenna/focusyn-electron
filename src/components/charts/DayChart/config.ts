@@ -2,14 +2,17 @@ import range from 'lodash-es/range';
 
 import { token } from '@/reactapp/styled/tokens';
 
+const borderRadius = 12;
+
 export const chart = {
   // 60 minutes/h * 24h/day = 1440 minutes/day
   maxBarQty: 60 * 24,
   bg: token('colors.slate.700'),
+  borderRadius,
   size: {
-    h: 100,
+    h: 50,
     w(width: number) {
-      return width - container.size.margin * 2;
+      return width - container.size.marginX * 2;
     },
   },
   get tickValues() {
@@ -22,8 +25,6 @@ export const chart = {
   step(width: number) {
     return width / this.maxBarQty;
   },
-  // TODO: find a nice bg color for the chart
-  bg: '#D0D0D0',
 };
 
 export const axis = {
@@ -31,13 +32,15 @@ export const axis = {
     h: 20,
     w: '100%',
   },
+  marginTop: borderRadius,
 };
 
 export const container = {
   size: {
-    margin: 25,
+    // FIXME: fix margins so the start and end ticks labels are not cut off
+    marginX: borderRadius,
     get h(): number {
-      return chart.size.h + axis.size.h + this.margin * 2;
+      return chart.size.h + (axis.marginTop + axis.size.h);
     },
     w: '100%',
   },

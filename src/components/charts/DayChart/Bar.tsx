@@ -3,9 +3,8 @@ import { UseTooltipParams } from '@visx/tooltip/lib/hooks/useTooltip';
 
 import { TooltipData } from '../Tooltip';
 
-import { chart, container } from './config';
+import { chart } from './config';
 import { bar } from './styles';
-import { countToFormattedTime } from './utils';
 
 interface Props {
   x: number;
@@ -19,7 +18,7 @@ interface Props {
 
 export const Bar = ({
   x,
-  y = container.size.margin,
+  y = 0,
   zoom,
   chartWidth,
   window,
@@ -39,9 +38,8 @@ export const Bar = ({
     showTooltip({
       tooltipData: {
         title: window.owner.name,
-        description: `${countToFormattedTime(window.group.count)} (${
-          window.group.count
-        })`,
+        // FIXME: restore time formatting
+        description: window.group.count.toString(),
       },
       tooltipTop: y,
       tooltipLeft: x,
