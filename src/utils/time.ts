@@ -1,4 +1,7 @@
+import { ms } from 'convert';
+
 import { TimeUnits } from '@/reactapp/types/time';
+import { INTERVAL_TIME } from '@/shared/config';
 
 /**
  * Returns the hours, minutes and seconds of a `Date` object as numbers.
@@ -40,3 +43,23 @@ export const getFormattedTime = (time: number): string => {
 
   return result;
 };
+
+/**
+ * Calculates the amount of counts needed to reach a given time.
+ * @param time Time formatted following `convert` library's format.
+ * @returns The number of counts needed to reach the given time.
+ * @example ```
+ * countThreshold('1min') // with INTERVAL_TIME=1 => 60 counts
+ * ```
+ */
+export const countThreshold = (time: string) => ms(time) / INTERVAL_TIME;
+
+/**
+ * How many counts are need (when windows are grouped) to render a bar in the chart?
+ */
+export const CHART_COUNT_THRESHOLD = countThreshold('1min');
+
+/**
+ * How many counts are need (when windows are grouped) to render a bar in the chart?
+ */
+export const FOCUS_COUNT_THRESHOLD = countThreshold('5min');

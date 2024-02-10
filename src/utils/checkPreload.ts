@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ElectronAPI } from '@/reactapp/types/window';
 
 type APIList = keyof ElectronAPI;

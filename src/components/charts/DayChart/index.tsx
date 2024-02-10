@@ -3,7 +3,8 @@ import { AxisBottom as Axis } from '@visx/axis';
 import { GridColumns as Grid } from '@visx/grid';
 import { withTooltip } from '@visx/tooltip';
 
-import { CHART_COUNT_THRESHOLD, INTERVAL_TIME } from '@/shared/config';
+import { INTERVAL_TIME } from '@/shared/config';
+import { CHART_COUNT_THRESHOLD } from '@/reactapp/utils/time';
 import { ChartProps } from '@/reactapp/types/chart';
 import { token } from '@/reactapp/styled/tokens';
 
