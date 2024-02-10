@@ -1,13 +1,10 @@
-import { Result, Grouped } from '@/shared/types/activeWindow';
-import { createContext, useContext } from 'react';
+import { useContext } from 'react';
 
-import { groupBy } from '@/reactapp/services/activeWindow';
 import { GroupByArgs } from '@/reactapp/services/activeWindow/types';
+import { groupBy } from '@/reactapp/services/activeWindow';
+import { Grouped, Result } from '@/shared/types/activeWindow';
 
-const context = createContext<Result[]>([]);
-context.displayName = 'ActiveWindowsContext';
-
-export const ActiveWindowsProvider = context.Provider;
+import { context } from './ctx';
 
 /**
  * Retrieves the list of active windows from the global context.
