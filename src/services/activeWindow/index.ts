@@ -1,8 +1,9 @@
 import type { Callback } from '@/shared/types/activeWindow';
 import checkPreload from '@/reactapp/utils/checkPreload';
+import { ElectronAPI } from '@/reactapp/types/window';
 
 import { groupBy } from './groupBy';
-import { ElectronAPI } from '@/reactapp/types/window';
+import { getTotalTime } from './getTotalTime';
 
 const api = () => checkPreload<ElectronAPI['activeWindow']>('activeWindow');
 
@@ -18,4 +19,4 @@ export const subscribe = (callback: Callback) => {
  */
 export const unsubscribe = api().unsubscribe;
 
-export { groupBy };
+export { groupBy, getTotalTime };
