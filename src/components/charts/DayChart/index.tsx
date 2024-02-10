@@ -3,8 +3,7 @@ import { AxisBottom as Axis } from '@visx/axis';
 import { GridColumns as Grid } from '@visx/grid';
 import { withTooltip } from '@visx/tooltip';
 
-import { INTERVAL_TIME } from '@/shared/config';
-import { msToSec } from '@/shared/time';
+import { CHART_COUNT_THRESHOLD, INTERVAL_TIME } from '@/shared/config';
 import { ChartProps } from '@/reactapp/types/chart';
 import { token } from '@/reactapp/styled/tokens';
 
@@ -33,11 +32,9 @@ export const DayChart = withTooltip<ChartProps, TooltipData>(
     const xScale = useScale({ width, x: pannedBounds });
 
     // Remove data that doesn't get to a minute and the data out of bounds
-    const filteredData = data.filter((d) => {
-      const threshold = 60 / msToSec(INTERVAL_TIME);
-
-      return d.group.count >= threshold;
-    });
+    const filteredData = data.filter(
+      (d) => d.group.count >= CHART_COUNT_THRESHOLD
+    );
 
     return (
       <div>

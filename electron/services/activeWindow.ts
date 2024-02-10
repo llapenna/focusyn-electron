@@ -1,9 +1,9 @@
 import activeWin from 'active-win';
 import { powerMonitor } from 'electron';
+import convert from 'convert';
 
 import { IDLE_TIME, INTERVAL_TIME } from '@/shared/config';
 import { Result } from '@/shared/types/activeWindow';
-import { msToSec } from '@/shared/time';
 
 import { window } from '../main';
 
@@ -63,9 +63,10 @@ const generateIdleState = (): Result => ({
  * Sends the current active window to the renderer (React) process
  */
 const send = async (): Promise<void> => {
+  const idleThreshold = convert(IDLE_TIME, 'ms').to('s');
+
   if (window) {
-    const isIdle =
-      powerMonitor.getSystemIdleState(msToSec(IDLE_TIME)) === 'idle';
+    const isIdle = powerMonitor.getSystemIdleState(idleThreshold) === 'idle';
 
     if (isIdle)
       window.webContents.send('ACTIVE_WINDOW_SUBSCRIBE', generateIdleState());
