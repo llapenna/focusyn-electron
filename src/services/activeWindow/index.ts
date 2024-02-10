@@ -1,4 +1,4 @@
-import type { ActiveWindow } from '@/shared/types/activeWindow';
+import type { Callback } from '@/shared/types/activeWindow';
 import checkPreload from '@/reactapp/utils/checkPreload';
 
 import { groupBy } from './groupBy';
@@ -10,7 +10,7 @@ const api = () => checkPreload<ElectronAPI['activeWindow']>('activeWindow');
  * Listen for active-window messages from the main process
  * @param callback Code to execute on each received IPC message
  */
-export const subscribe = (callback: ActiveWindow.Callback) => {
+export const subscribe = (callback: Callback) => {
   api().subscribe(callback);
 };
 /**

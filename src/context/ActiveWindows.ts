@@ -1,10 +1,10 @@
-import { ActiveWindow } from '@/shared/types/activeWindow';
+import { Result, Grouped } from '@/shared/types/activeWindow';
 import { createContext, useContext } from 'react';
 
 import { groupBy } from '@/reactapp/services/activeWindow';
 import { GroupByArgs } from '@/reactapp/services/activeWindow/types';
 
-const context = createContext<ActiveWindow.Result[]>([]);
+const context = createContext<Result[]>([]);
 context.displayName = 'ActiveWindowsContext';
 
 export const ActiveWindowsProvider = context.Provider;
@@ -13,7 +13,7 @@ export const ActiveWindowsProvider = context.Provider;
  * Retrieves the list of active windows from the global context.
  * @returns List of active windows.
  */
-export const useActiveWindows = (): ActiveWindow.Result[] => {
+export const useActiveWindows = (): Result[] => {
   return useContext(context);
 };
 
@@ -24,7 +24,7 @@ export const useActiveWindows = (): ActiveWindow.Result[] => {
 export const useGroupedActiveWindows = ({
   by = 'owner.name',
   consecutive = true,
-}: Partial<GroupByArgs>): ActiveWindow.Grouped[] => {
+}: Partial<GroupByArgs>): Grouped[] => {
   const data = useContext(context);
 
   return groupBy(data, { by, consecutive });

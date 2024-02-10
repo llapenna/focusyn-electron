@@ -1,4 +1,4 @@
-import { ActiveWindow } from '@/shared/types/activeWindow';
+import { Grouped } from '@/shared/types/activeWindow';
 import { UseTooltipParams } from '@visx/tooltip/lib/hooks/useTooltip';
 
 import { TooltipData } from '../Tooltip';
@@ -11,7 +11,7 @@ interface Props {
   y?: number;
   zoom: number;
   chartWidth: number;
-  window: ActiveWindow.Grouped;
+  window: Grouped;
   showTooltip: UseTooltipParams<TooltipData>['showTooltip'];
   hideTooltip: UseTooltipParams<TooltipData>['hideTooltip'];
 }

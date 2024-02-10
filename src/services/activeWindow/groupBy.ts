@@ -1,6 +1,6 @@
 import iteratee from 'lodash-es/iteratee';
 
-import { ActiveWindow } from '@/shared/types/activeWindow';
+import { Grouped } from '@/shared/types/activeWindow';
 import type {
   GroupByArgs,
   GetComparedEntryFunction,
@@ -59,7 +59,7 @@ export const groupBy: GroupByFunction = (
   arr,
   { by = 'title', consecutive = false }
 ) => {
-  const result: ActiveWindow.Grouped[] = [];
+  const result: Grouped[] = [];
 
   for (const window of arr) {
     const compared = getComparedEntry(result, window, { by, consecutive });

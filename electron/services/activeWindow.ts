@@ -2,7 +2,7 @@ import activeWin from 'active-win';
 import { powerMonitor } from 'electron';
 
 import { IDLE_TIME, INTERVAL_TIME } from '@/shared/config';
-import { ActiveWindow } from '@/shared/types/activeWindow';
+import { Result } from '@/shared/types/activeWindow';
 import { msToSec } from '@/shared/time';
 
 import { window } from '../main';
@@ -39,12 +39,13 @@ const getCurrentWindow = () => {
  * Generates a fake idle state window
  * @returns Idle state window
  */
-const generateIdleState = (): ActiveWindow.IdleResult => ({
+const generateIdleState = (): Result => ({
   title: 'Idle',
   timestamp: Date.now(),
   owner: {
     name: 'Idle',
     processId: 0,
+    path: '',
   },
   id: 0,
   bounds: {
@@ -54,6 +55,8 @@ const generateIdleState = (): ActiveWindow.IdleResult => ({
     height: 0,
   },
   memoryUsage: 0,
+  // Defined as windows only to fill the type, won't affect the result
+  platform: 'windows',
 });
 
 /**

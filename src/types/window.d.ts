@@ -1,9 +1,9 @@
-import type { ActiveWindow } from '@/shared/types/activeWindow';
+import type { Subscribe } from '@/shared/types/activeWindow';
 
 export interface ElectronAPI {
   activeWindow: {
-    subscribe: ActiveWindow.Subscribe;
-    unsubscribe: ActiveWindow.Unsubscribe;
+    subscribe: Subscribe;
+    unsubscribe: Unsubscribe;
   };
   versions: {
     node: () => string;

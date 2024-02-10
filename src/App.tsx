@@ -6,12 +6,12 @@ import '@/reactapp/utils/clamp';
 import { subscribe, unsubscribe } from '@/reactapp/services/activeWindow';
 import { Main } from '@/reactapp/components/layout';
 
-import { ActiveWindow } from '@/shared/types/activeWindow';
+import { Result } from '@/shared/types/activeWindow';
 import Overview from './pages/Overview';
 import { ActiveWindowsProvider } from '@/reactapp/context/ActiveWindows';
 
 function App() {
-  const [count, setCount] = useState<ActiveWindow.Result[]>([]);
+  const [count, setCount] = useState<Result[]>([]);
 
   useEffect(() => {
     subscribe((_, window) => {

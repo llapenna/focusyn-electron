@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
-import type { IPC } from '@/shared/types/utils';
+import type { SubscribeCallback } from '@/shared/types/ipc';
 /**
  * Expose protected methods that allow the renderer process to use node modules and methods
  */
@@ -15,7 +15,7 @@ const versions = {
  */
 const activeWindow = {
   current: () => ipcRenderer.invoke('ACTIVE_WINDOW_CURRENT'),
-  subscribe: (callback: IPC.SubscribeCallback) =>
+  subscribe: (callback: SubscribeCallback) =>
     ipcRenderer.on('ACTIVE_WINDOW_SUBSCRIBE', callback),
   unsubscribe: () => ipcRenderer.removeAllListeners('ACTIVE_WINDOW_SUBSCRIBE'),
 };
