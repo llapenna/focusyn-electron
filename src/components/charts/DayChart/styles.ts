@@ -1,10 +1,5 @@
 import { cva } from '@/reactapp/styled/css';
 
-export const container = cva({
-  base: {
-    cursor: 'e-resize',
-  },
-});
 export const bar = cva({
   base: {
     cursor: 'pointer',
