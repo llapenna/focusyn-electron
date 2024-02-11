@@ -39,6 +39,7 @@
       "@/reactapp/styled/*": ["src/styled/*"],
       "@/reactapp/pages/*": ["src/pages/*"],
       "@/reactapp/context/*": ["src/context/*"],
+      "@/reactapp/hooks": ["src/hooks/index"],
       "@/shared/*": ["shared/*"]
     }
   },
