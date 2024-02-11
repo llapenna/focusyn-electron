@@ -4,6 +4,7 @@ import { ElectronAPI } from '@/reactapp/types/window';
 
 import { groupBy } from './groupBy';
 import { getTotalTime } from './getTotalTime';
+import { filterBy } from './filterBy';
 
 const api = () => checkPreload<ElectronAPI['activeWindow']>('activeWindow');
 
@@ -19,4 +20,4 @@ export const subscribe = (callback: Callback) => {
  */
 export const unsubscribe = api().unsubscribe;
 
-export { groupBy, getTotalTime };
+export { groupBy, getTotalTime, filterBy };
