@@ -1,19 +1,15 @@
 import { Alarm, Moon, Target } from '@phosphor-icons/react';
 
 import { hstack } from '@/reactapp/styled/patterns';
-import {
-  useActiveWindows,
-  useGroupedActiveWindows,
-} from '@/reactapp/context/ActiveWindows';
+import { useGroupedActiveWindows } from '@/reactapp/context/ActiveWindows';
 
 import { overview } from './styles';
 import { Total } from './Total';
 import { Chart } from './Chart';
 import { getTotalTime } from '@/reactapp/services/activeWindow';
-import { FOCUS_COUNT_THRESHOLD, getFormattedTime } from '@/reactapp/utils/time';
+import { getFormattedTime } from '@/reactapp/utils/time';
 
 const Overview = () => {
-  const windows = useActiveWindows();
   const grouped = useGroupedActiveWindows({});
 
   const total = getTotalTime(grouped, 'All');
@@ -39,7 +35,7 @@ const Overview = () => {
           icon={<Moon size={24} />}
         />
       </div>
-      <Chart />
+      <Chart data={grouped} />
     </div>
   );
 };
