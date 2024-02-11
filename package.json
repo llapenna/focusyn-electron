@@ -11,7 +11,8 @@
     "package": "npm run build && electron-builder",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "knip": "knip",
-    "codecheck": "npm run lint && npm run knip",
+    "typecheck": "tsc --noEmit",
+    "codecheck": "npm run lint && npm run typecheck && npm run knip",
     "prepare": "husky install && panda codegen",
     "release": "dotenv release-it",
     "release:ci": "dotenv release-it --ci"
