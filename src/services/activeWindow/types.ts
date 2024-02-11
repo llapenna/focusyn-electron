@@ -21,5 +21,4 @@ export type GetComparedEntryFunction = (
 // -------------------
 // GET TOTAL TIME types
 // -------------------
-export type WindowGrouping = Result[] | Grouped[];
-export type FilterBy = 'active' | 'idle' | 'both';
+export type FilterBy = 'All' | 'Active' | 'Idle' | 'Focus';

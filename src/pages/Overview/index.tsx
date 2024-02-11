@@ -16,13 +16,9 @@ const Overview = () => {
   const windows = useActiveWindows();
   const grouped = useGroupedActiveWindows({});
 
-  const total = getTotalTime(windows, 'both');
-  const idle = getTotalTime(windows, 'idle');
-
-  const focusedEntries = grouped.filter(
-    ({ group }) => group.count >= FOCUS_COUNT_THRESHOLD
-  );
-  const focused = getTotalTime(focusedEntries, 'active');
+  const total = getTotalTime(grouped, 'All');
+  const idle = getTotalTime(grouped, 'Idle');
+  const focused = getTotalTime(grouped, 'Focus');
 
   return (
     <div className={overview()}>
@@ -31,18 +27,17 @@ const Overview = () => {
           title="Total"
           value={getFormattedTime(total)}
           icon={<Alarm size={24} />}
-        ></Total>
-        {/* TODO: find a way to calculate focus time */}
+        />
         <Total
           title="Focus"
           value={getFormattedTime(focused)}
           icon={<Target size={24} />}
-        ></Total>
+        />
         <Total
           title="Idle"
           value={getFormattedTime(idle)}
           icon={<Moon size={24} />}
-        ></Total>
+        />
       </div>
       <Chart />
     </div>
