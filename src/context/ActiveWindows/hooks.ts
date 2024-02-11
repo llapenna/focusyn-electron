@@ -15,7 +15,7 @@ export const useActiveWindows = (): Result[] => {
 };
 
 /**
- * Retrieves the list of active windows from the global context and groups.
+ * Retrieves the list of active windows from the global context and groups the results.
  * @returns Grouped active windows by `owner.name` and grouping if they are consecutive.
  */
 // FIXME: Set the props so they're optional and you're not forced to pass {}
