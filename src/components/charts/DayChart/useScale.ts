@@ -1,6 +1,6 @@
 import { scaleLinear } from '@visx/scale';
 import { useMemo } from 'react';
-import { chart } from './config';
+import { CHART, TICKS } from './config';
 
 interface Props {
   width: number;
@@ -15,7 +15,7 @@ interface Props {
  */
 export const useScale = ({
   width,
-  x = [0, chart.maxBarQty],
+  x = [0, TICKS.BARS],
   clamp = true,
 }: Props) => {
   const [xMin, xMax] = x;
@@ -24,7 +24,7 @@ export const useScale = ({
     () =>
       scaleLinear<number>({
         domain: [xMin, xMax],
-        range: [0, chart.size.w(width)],
+        range: [0, CHART.SIZE.W(width)],
         clamp,
       }),
     [width, xMax, xMin, clamp]
