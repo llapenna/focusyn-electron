@@ -1,4 +1,2 @@
-import Main from './Main';
-import Container from './Container';
-
-export { Container, Main };
+export { Main } from './Main';
+export { Container } from './Container';

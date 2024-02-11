@@ -3,7 +3,7 @@ import { main } from './styles';
 interface Props {
   children: React.ReactNode;
 }
-const Main = ({ children }: Props) => {
+export const Main = ({ children }: Props) => {
   const classes = main();
   return (
     <>
@@ -15,5 +15,3 @@ const Main = ({ children }: Props) => {
     </>
   );
 };
-
-export default Main;
