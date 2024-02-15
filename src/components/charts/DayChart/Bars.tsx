@@ -20,6 +20,7 @@ interface Props {
   children?: ReactNode;
   top?: number;
   height?: number;
+  scale: ReturnType<typeof useScale>;
 }
 export const Bars = ({
   data,
@@ -28,9 +29,8 @@ export const Bars = ({
   children,
   top = 0,
   height = CHART.SIZE.H,
+  scale,
 }: Props) => {
-  const xScale = useScale({ width: containerWidth });
-
   const onMouseEnter = (w: Grouped, x: number) => () =>
     tooltip?.show({
       tooltipData: {
@@ -47,9 +47,10 @@ export const Bars = ({
     <Group left={MARGIN_X} top={top}>
       {data.map((w) => {
         const t = minutesSinceStart(w.timestamp);
-        const x = xScale(t);
+        const x = scale(t);
         const y = 0;
 
+        // TODO: Adjust the width based on the bounds setted by the brush
         const width =
           TICKS.STEP(containerWidth) *
           Math.floor(w.group.count / CHART_COUNT_THRESHOLD);

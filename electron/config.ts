@@ -36,7 +36,7 @@ export const IS_LINUX = process.platform === 'linux';
  * The title bar configuration.
  */
 export const titleBar: BrowserWindowConstructorOptions = {
-  titleBarStyle: 'hidden',
+  titleBarStyle: IS_DEV ? 'default' : 'hidden',
   ...(IS_MAC
     ? { transparent: true }
     : {
